@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team | UHV Cell</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <img src="logo.jpg" alt="Logo">
+                <span>UHV CELL</span>
+            </a>
+            <div class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="team.html" class="active">Our Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="page-header header-glow" style="padding: 80px 0; text-align: center;">
+        <h1 style="font-size: 3rem;">Meet Our Team</h1>
+        <p>Dedicated Faculty and Student Coordinators</p>
+    </div>
+
+    <section class="section" style="padding: 80px 0;">
+        <div class="container">
+            <!-- Faculty Coordinators -->
+            <h2 class="section-title" style="text-align: left; font-size: 2rem; margin-top: 40px;">Faculty Coordinators
+            </h2>
+            <div class="grid-3" style="margin-top: 30px;">
+
+                <div class="profile-card fade-in">
+                    <div class="profile-img-container">
+                        <div class="profile-placeholder"><i class="fa-solid fa-user"></i></div>
+                        <!-- <img src="assets/images/faculty1.jpg" alt="Faculty Name"> -->
+                    </div>
+                    <div class="profile-name">Dr. V. Ravi Prasad</div>
+                    <div class="profile-role">Director, NBKRIST</div>
+                    <div class="profile-detail">Chief Patron</div>
+                </div>
+
+                <div class="profile-card fade-in" style="animation-delay: 0.2s;">
+                    <div class="profile-img-container">
+                        <div class="profile-placeholder"><i class="fa-solid fa-user"></i></div>
+                    </div>
+                    <div class="profile-name">Prof. Name</div>
+                    <div class="profile-role">UHV Coordinator</div>
+                    <div class="profile-detail">Department of CSE</div>
+                </div>
+
+                <div class="profile-card fade-in" style="animation-delay: 0.4s;">
+                    <div class="profile-img-container">
+                        <div class="profile-placeholder"><i class="fa-solid fa-user"></i></div>
+                    </div>
+                    <div class="profile-name">Faculty Name</div>
+                    <div class="profile-role">Co-Coordinator</div>
+                    <div class="profile-detail">Department of ECE</div>
+                </div>
+
+            </div>
+
+            <!-- Student Coordinators -->
+            <h2 class="section-title" style="text-align: left; font-size: 2rem; margin-top: 80px;">Student Coordinators
+            </h2>
+            <div class="grid-3" style="margin-top: 30px;">
+
+                <div class="profile-card fade-in">
+                    <div class="profile-img-container">
+                        <div class="profile-placeholder"><i class="fa-solid fa-graduation-cap"></i></div>
+                    </div>
+                    <div class="profile-name">Arjun Reddy</div>
+                    <div class="profile-role">President</div>
+                    <div class="profile-detail">Final Year</div>
+                </div>
+
+                <div class="profile-card fade-in" style="animation-delay: 0.2s;">
+                    <div class="profile-img-container">
+                        <div class="profile-placeholder"><i class="fa-solid fa-graduation-cap"></i></div>
+                    </div>
+                    <div class="profile-name">Sneha Gupta</div>
+                    <div class="profile-role">Secretary</div>
+                    <div class="profile-detail">Final Year</div>
+                </div>
+
+                <div class="profile-card fade-in" style="animation-delay: 0.4s;">
+                    <div class="profile-img-container">
+                        <div class="profile-placeholder"><i class="fa-solid fa-graduation-cap"></i></div>
+                    </div>
+                    <div class="profile-name">Rahul Kumar</div>
+                    <div class="profile-role">Event Lead</div>
+                    <div class="profile-detail">Third Year</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 20px;">
+                        <img src="logo.jpg" style="border-radius: 50%;" alt="Logo">
+                        <span>UHV CELL</span>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="activities.html">Activities</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p style="color: #94a3b8;">uhv.cell@nbkrist.org</p>
+                    <p style="color: #94a3b8; margin-top: 10px;">Vidyanagar, Nellore District</p>
+                </div>
+            </div>
+            <div class="copyright">&copy; 2025 UHV Cell.</div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>
