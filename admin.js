@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     checkAdminStatus();
+    checkAppMode();
 });
 
 function checkAdminStatus() {
@@ -53,4 +54,14 @@ function checkAdminStatus() {
 function logoutAdmin() {
     localStorage.removeItem('uhvAdminLoggedIn');
     window.location.reload();
+}
+
+function checkAppMode() {
+    // Check for custom User-Agent set by Android App
+    if (navigator.userAgent.includes("MyWebsiteAndroidApp")) {
+        const downloadItems = document.querySelectorAll('.download-item');
+        downloadItems.forEach(item => {
+            item.style.display = 'none';
+        });
+    }
 }

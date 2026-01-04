@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | UHV CELL NBKRIST</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="shortcut icon" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -68,8 +71,8 @@
                 <li><a href="resources.html">Resources</a></li>
                 <li><a href="team.html">Our Team</a></li>
                 <li><a href="contact.html" class="active">Contact</a></li>
-                <li class="login-item"><a href="login.html" class="btn-login">Login</a></li>
-                <li class="login-item"><a href="register.html" class="btn-register">Register</a></li>
+                <li class="download-item"><a href="#" class="btn-download-app"><i class="fa-solid fa-download"></i>
+                        Download App</a></li>
             </ul>
         </div>
     </header>
@@ -120,6 +123,8 @@
                             <p>Social media links coming soon.</p>
                         </div>
                     </div>
+
+
                 </div>
 
                 <!-- Map / Form Placeholder -->
@@ -137,6 +142,17 @@
     <script>
         document.querySelector('.menu-toggle').addEventListener('click', () => {
             document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // App Detection Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check for custom User-Agent set by Android App
+            if (navigator.userAgent.includes("MyWebsiteAndroidApp")) {
+                const btn = document.getElementById('downloadAppBtn');
+                if (btn) {
+                    btn.style.display = 'none'; // Hide button inside the app
+                }
+            }
         });
     </script>
     <script src="admin.js"></script>

@@ -741,3 +741,54 @@ footer {
     font-style: italic;
     opacity: 0.7;
 }
+
+/* Download App Button in Nav */
+.nav-links .download-item a.btn-download-app {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    /* Theme Gradient */
+    color: var(--white);
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+    /* Neon Glow */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    animation: pulse-glow 2s infinite;
+}
+
+.nav-links .download-item a.btn-download-app:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.8), 0 0 10px var(--secondary);
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+    color: var(--white);
+    animation: none;
+}
+
+.nav-links .download-item a.btn-download-app i {
+    font-size: 1.1em;
+}
+
+.nav-links .download-item a.btn-download-app::after {
+    display: none;
+}
+
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+    }
+
+    50% {
+        box-shadow: 0 0 25px rgba(0, 243, 255, 0.8), 0 0 10px rgba(188, 19, 254, 0.5);
+    }
+
+    100% {
+        box-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+    }
+}
