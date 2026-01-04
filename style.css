@@ -37,7 +37,7 @@
 
     /* Layout */
     --container-width: 1200px;
-    --header-height: 80px;
+    --header-height: 100px;
     --radius: 16px;
 
     /* Shadows */
@@ -204,7 +204,7 @@ header {
 }
 
 .logo img {
-    height: 45px;
+    height: 75px;
     width: auto;
     border-radius: 50%;
     border: 2px solid var(--primary);
