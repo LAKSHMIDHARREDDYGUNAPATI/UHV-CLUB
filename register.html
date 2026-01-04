@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Registration | UHV CELL NBKRIST</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin-style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <img src="logo.jpg" alt="Logo">
+                <span>UHV CELL NBKRIST</span>
+            </a>
+            <!-- Minimal Nav for Login Page -->
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="hero-bg"></div>
+        <div class="container" style="display: flex; justify-content: center; width: 100%;">
+            <div class="auth-form-container fade-in">
+                <div style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;">
+                    <i class="fa-solid fa-user-plus"></i>
+                </div>
+                <h2 style="margin-bottom: 30px;">Register Admin</h2>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="surname">Surname</label>
+                        <input type="text" id="surname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-username">Username</label>
+                        <input type="text" id="reg-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-password">Password</label>
+                        <input type="password" id="reg-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Re-enter Password</label>
+                        <input type="password" id="confirm-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
+                    <p id="error-msg" style="color: var(--accent); margin-top: 15px; display: none;"></p>
+                    <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-muted);">
+                        Already have an account? <a href="login.html" style="color: var(--primary);">Login</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="copyright">&copy; 2025 UHV CELL NBKRIST.</div>
+        </div>
+    </footer>
+
+    <script src="admin.js"></script>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const firstName = document.getElementById('firstName').value;
+            const surname = document.getElementById('surname').value;
+            const username = document.getElementById('reg-username').value;
+            const password = document.getElementById('reg-password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const errorMsg = document.getElementById('error-msg');
+
+            if (password !== confirmPassword) {
+                errorMsg.textContent = "Passwords do not match!";
+                errorMsg.style.display = 'block';
+                return;
+            }
+
+            if (password.length < 6) {
+                errorMsg.textContent = "Password must be at least 6 characters!";
+                errorMsg.style.display = 'block';
+                return;
+            }
+
+            // Simulate creating an account (In reality, this would check against a DB)
+            // Just for this demo, we can save it to localStorage
+            const newAdmin = {
+                firstName: firstName,
+                surname: surname,
+                username: username,
+                password: password // In real app, never store plain text passwords
+            };
+
+            // Get existing users or init empty array
+            const users = JSON.parse(localStorage.getItem('uhvAdminUsers') || '[]');
+
+            // Check if username exists
+            if (users.find(u => u.username === username)) {
+                errorMsg.textContent = "Username already exists!";
+                errorMsg.style.display = 'block';
+                return;
+            }
+
+            users.push(newAdmin);
+            localStorage.setItem('uhvAdminUsers', JSON.stringify(users));
+
+            alert('Registration Successful! Please login.');
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+
+</html>
