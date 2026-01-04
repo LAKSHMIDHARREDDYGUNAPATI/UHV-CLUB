@@ -121,7 +121,7 @@
                 </div>
                 <div class="footer-col">
                     <h4>Contact Us</h4>
-
+                    <p style="color: #94a3b8;">uhv.cell@nbkrist.org</p>
                     <p style="color: #94a3b8;">raghavammab@nbkrist.org</p>
                     <p style="color: #94a3b8;">+91 89858 42025</p>
                     <p style="color: #94a3b8; margin-top: 10px;">Vidyanagar, Nellore District</p>
@@ -133,54 +133,127 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // ... (existing params parsing)
+            // Mobile Menu Toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            if (menuToggle) {
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
+            }
 
-            // ADDED: Hide gallery if no ID is present, to prevent ugly empty page view directly
+            // Gallery Data Logic
+            const params = new URLSearchParams(window.location.search);
+            const activityId = params.get('id');
+
+            const titleEl = document.getElementById('gallery-title');
+            const descEl = document.getElementById('gallery-desc');
+            const container = document.getElementById('gallery-container');
+
             if (!activityId) {
                 container.innerHTML = '<p style="text-align:center;">Please select an activity from the Activities page.</p>';
+                return;
+            }
+
+            let title = "Gallery";
+            let desc = "Images from our events";
+
+            if (activityId === 'activity-workshops') {
+                title = "UHV Workshops Gallery";
+                desc = "Memories from our Level 1 & 2 Workshops";
+
+                // Change grid to a single column list for "one by one align center"
+                container.className = 'gallery-list';
+                container.style.display = 'flex';
+                container.style.flexDirection = 'column';
+                container.style.alignItems = 'center';
+                container.style.gap = '40px';
+
+                // --- DAY 1 ---
+                const h1 = document.createElement('h2');
+                h1.textContent = "DAY 1 SDG PANEL DISCUSSION";
+                h1.className = 'section-title';
+                h1.style.marginBottom = '20px';
+                container.appendChild(h1);
+
+                const day1Images = ['sdg_day1_1.jpg', 'sdg_day1_2.jpg', 'sdg_day1_3.jpg', 'sdg_day1_4.jpg'];
+                day1Images.forEach((src, i) => {
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.className = 'fade-in';
+                    img.style.width = '100%';
+                    img.style.maxWidth = '800px';
+                    img.style.borderRadius = '12px';
+                    img.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+                    img.style.animationDelay = (i * 0.1) + 's';
+                    container.appendChild(img);
+                });
+
+                // --- DAY 2 ---
+                const h2 = document.createElement('h2');
+                h2.textContent = "DAY 2 SDG PANEL DISCUSSION";
+                h2.className = 'section-title';
+                h2.style.marginTop = '60px';
+                h2.style.marginBottom = '20px';
+                container.appendChild(h2);
+
+                const day2Images = ['sdg_day2_1.jpg', 'sdg_day2_2.jpg'];
+                day2Images.forEach((src, i) => {
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.className = 'fade-in';
+                    img.style.width = '100%';
+                    img.style.maxWidth = '800px';
+                    img.style.borderRadius = '12px';
+                    img.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+                    img.style.animationDelay = (i * 0.1) + 's';
+                    container.appendChild(img);
+                });
+
+                // --- DAY 3 ---
+                const h3 = document.createElement('h2');
+                h3.textContent = "DAY 3 SDG PANEL DISCUSSION";
+                h3.className = 'section-title';
+                h3.style.marginTop = '60px';
+                h3.style.marginBottom = '20px';
+                container.appendChild(h3);
+
+                const day3Images = ['sdg_day3_1.jpg', 'sdg_day3_2.jpg', 'sdg_day3_3.jpg'];
+                day3Images.forEach((src, i) => {
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.className = 'fade-in';
+                    img.style.width = '100%';
+                    img.style.maxWidth = '800px';
+                    img.style.borderRadius = '12px';
+                    img.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+                    img.style.animationDelay = (i * 0.1) + 's';
+                    container.appendChild(img);
+                });
+
+            } else if (activityId === 'activity-gd') {
+                title = "Group Discussions";
+                desc = "Students engaging in value-based dialogues";
+                populatePlaceholders(6);
+            } else if (activityId === 'activity-talks') {
+                title = "Expert Talks";
+                desc = "Sessions by renowned resource persons";
+                populatePlaceholders(4);
+            }
+
+            titleEl.textContent = title;
+            descEl.textContent = desc;
+
+            function populatePlaceholders(count) {
+                for (let i = 0; i < count; i++) {
+                    const item = document.createElement('div');
+                    item.className = 'gallery-item fade-in';
+                    item.style.animationDelay = (i * 0.1) + 's';
+                    container.appendChild(item);
+                }
             }
         });
     </script>
-    document.querySelector('.menu-toggle').addEventListener('click', () => {
-    document.querySelector('.nav-links').classList.toggle('active');
-    });
-
-    // Gallery Data Logic
-    const params = new URLSearchParams(window.location.search);
-    const activityId = params.get('id');
-
-    const titleEl = document.getElementById('gallery-title');
-    const descEl = document.getElementById('gallery-desc');
-    const container = document.getElementById('gallery-container');
-
-    let title = "Gallery";
-    let desc = "Images from our events";
-    let count = 6; // Number of images to show
-
-    if (activityId === 'activity-workshops') {
-    title = "UHV Workshops Gallery";
-    desc = "Memories from our Level 1 & 2 Workshops";
-    count = 8;
-    } else if (activityId === 'activity-gd') {
-    title = "Group Discussions";
-    desc = "Students engaging in value-based dialogues";
-    count = 6;
-    } else if (activityId === 'activity-talks') {
-    title = "Expert Talks";
-    desc = "Sessions by renowned resource persons";
-    count = 4;
-    }
-
-    titleEl.textContent = title;
-    descEl.textContent = desc;
-
-    // Generate placeholders
-    for (let i = 0; i < count; i++) { const item=document.createElement('div'); item.className='gallery-item fade-in' ;
-        item.style.animationDelay=(i * 0.1) + 's' ; // In a real app, we would add <img> tags here
-        container.appendChild(item);
-        }
-
-        </script>
 </body>
 
 </html>
