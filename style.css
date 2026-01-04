@@ -832,3 +832,9 @@ footer {
         box-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
     }
 }
+
+/* Temporarily disable download button globally */
+.download-item,
+.btn-download-app {
+    display: none !important;
+}
