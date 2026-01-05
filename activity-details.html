@@ -78,6 +78,7 @@
             </ul>
         </div>
     </header>
+    <script src="app-utils.js"></script>
 
     <div class="page-header header-glow" style="padding: 80px 0; text-align: center;">
         <h1 id="gallery-title" style="font-size: 3rem;">Activity Gallery</h1>
@@ -130,18 +131,8 @@
             <div class="copyright">&copy; 2025 UHV CELL NBKRIST.</div>
         </div>
     </footer>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Mobile Menu Toggle
-            const menuToggle = document.querySelector('.menu-toggle');
-            const navLinks = document.querySelector('.nav-links');
-            if (menuToggle) {
-                menuToggle.addEventListener('click', () => {
-                    navLinks.classList.toggle('active');
-                });
-            }
-
             // Gallery Data Logic
             const params = new URLSearchParams(window.location.search);
             const activityId = params.get('id');
@@ -254,6 +245,7 @@
             }
         });
     </script>
+    <script src="admin.js"></script>
 </body>
 
 </html>
