@@ -21,8 +21,10 @@
     /* Dark Surface */
     --bg-glass: rgba(15, 16, 32, 0.7);
 
-    --text-main: #f8fafc;
+    --accent: #ff0055;
     --text-muted: #94a3b8;
+    --special-glow: 0 0 20px rgba(0, 243, 255, 0.4);
+    --text-main: #f8fafc;
     --white: #ffffff;
 
     /* Gradients */
@@ -128,6 +130,65 @@ img {
 }
 
 /* Glass/Secondary Button */
+.profile-card.special-member,
+.member-box.special-member {
+    border: 2px solid var(--primary);
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
+    background: rgba(0, 243, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-card.special-member::before,
+.member-box.special-member::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary);
+    box-shadow: 0 0 15px var(--primary);
+    animation: scan 3s linear infinite;
+    z-index: 2;
+    opacity: 0.5;
+}
+
+@keyframes scan {
+    0% {
+        top: 0;
+    }
+
+    50% {
+        top: 100%;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+
+.profile-card.special-member .profile-name {
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.special-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--primary);
+    color: var(--bg-body);
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    z-index: 3;
+    box-shadow: 0 0 10px var(--primary);
+}
+
 .btn-secondary {
     background: transparent;
     color: var(--primary);

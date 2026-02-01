@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resources | UHV CELL NBKRIST</title>
+    <title>Events | UHV CELL NBKRIST</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="shortcut icon" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
@@ -12,43 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="admin-style.css">
-    <style>
-        .resource-card {
-            background: var(--bg-surface);
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .resource-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.1);
-        }
-
-        .resource-icon {
-            font-size: 2.5rem;
-            color: var(--secondary);
-            margin-bottom: 20px;
-        }
-
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 15px;
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .download-btn:hover {
-            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
-        }
-    </style>
 </head>
 
 <body>
@@ -79,43 +42,40 @@
     <script src="app-utils.js"></script>
 
     <div class="page-header header-glow" style="padding: 80px 0; text-align: center;">
-        <h1 style="font-size: 3rem;">Resources</h1>
-        <p>Books, Presentations, and Study Materials</p>
+        <h1 style="font-size: 3rem;">Events</h1>
+        <p>Presentation slides covering all 5 modules of the UHV curriculum</p>
     </div>
 
-    <section class="section" style="padding: 80px 0;">
+    <section style="padding: 80px 0;">
         <div class="container">
-            <h2 class="section-title" style="text-align: left; font-size: 2rem;">Downloads</h2>
-            <div class="grid-3" style="margin-top: 30px;">
+            <a href="resources.html" class="btn btn-secondary" style="margin-bottom: 20px;"><i
+                    class="fa-solid fa-arrow-left"></i> Back to Resources</a>
 
-                <!-- Resource 1 -->
-                <div class="resource-card fade-in">
-                    <div class="resource-icon"><i class="fa-solid fa-book-open"></i></div>
-                    <h3>UHV Foundation Course</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 15px;">Official textbook and syllabus for
-                        Universal Human Values II.</p>
-                    <a href="uhv-foundation-course.html" class="download-btn">View Course Details <i
-                            class="fa-solid fa-arrow-right"></i></a>
+            <div
+                style="background: var(--bg-surface); padding: 40px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); margin-top: 20px;">
+                <h2 style="margin-bottom: 20px;">Course Modules</h2>
+                <div class="grid-3">
+                    <!-- Placeholder for Modules -->
+                    <!-- We can populate this with actual files later -->
+                    <div style="padding: 20px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                        <h4>Module 1</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Introduction to Value Education</p>
+                        <a href="#" class="btn btn-sm btn-primary" style="margin-top: 10px; font-size: 0.8rem;">Download
+                            PPT</a>
+                    </div>
+                    <div style="padding: 20px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                        <h4>Module 2</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Harmony in the Human Being</p>
+                        <a href="#" class="btn btn-sm btn-primary" style="margin-top: 10px; font-size: 0.8rem;">Download
+                            PPT</a>
+                    </div>
+                    <div style="padding: 20px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                        <h4>Module 3</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Harmony in the Family and Society</p>
+                        <a href="#" class="btn btn-sm btn-primary" style="margin-top: 10px; font-size: 0.8rem;">Download
+                            PPT</a>
+                    </div>
                 </div>
-
-                <!-- Resource 2 -->
-                <div class="resource-card fade-in" style="animation-delay: 0.2s;">
-                    <div class="resource-icon"><i class="fa-solid fa-file-powerpoint"></i></div>
-                    <h3>Events</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 15px;">Presentation slides covering all 5 modules
-                        of the UHV curriculum.</p>
-                    <a href="events.html" class="download-btn">View Events <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-
-                <!-- Resource 3 -->
-                <div class="resource-card fade-in" style="animation-delay: 0.4s;">
-                    <div class="resource-icon"><i class="fa-solid fa-video"></i></div>
-                    <h3>Videos</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 15px;">Recorded sessions and expert talks on
-                        human values.</p>
-                    <a href="videos.html" class="download-btn">Watch Videos <i class="fa-solid fa-play"></i></a>
-                </div>
-
             </div>
         </div>
     </section>

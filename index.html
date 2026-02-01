@@ -32,6 +32,7 @@
                 <li><a href="activities.html">Activities</a></li>
                 <li><a href="resources.html">Resources</a></li>
                 <li><a href="team.html">Our Team</a></li>
+                <li><a href="newsletter.html">Newsletter</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li class="download-item"><a href="https://your-storage-provider.com/uhv-cell.apk"
                         class="btn-download-app"><i class="fa-solid fa-download"></i>
@@ -52,8 +53,8 @@
                 <p>Join us in a journey of self-exploration and holistic development. We strive to nurture responsible
                     and ethical individuals for a harmonious society.</p>
                 <div style="display: flex; gap: 20px;">
-                    <a href="about.html" class="btn btn-primary">Discover More</a>
-                    <a href="contact.html" class="btn btn-secondary">Join Us</a>
+                    <a href="team-structure.html" class="btn btn-primary">Discover More</a>
+                    <a href="registration.html" class="btn btn-secondary">Join Us</a>
                 </div>
             </div>
         </div>
@@ -133,13 +134,14 @@
                         <li><a href="activities.html">Activities</a></li>
                         <li><a href="resources.html">Resources</a></li>
                         <li><a href="team.html">Our Team</a></li>
+                        <li><a href="newsletter.html">Newsletter</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Contact Us</h4>
 
-                    <p style="color: #94a3b8;">raghavammab@nbkrist.org</p>
+                    <p style="color: #94a3b8;">uhvcell@nbkrist.org</p>
                     <p style="color: #94a3b8;">+91 89858 42025</p>
                     <p style="color: #94a3b8; margin-top: 10px;">Vidyanagar, Nellore District</p>
                 </div>
@@ -167,7 +169,7 @@
             // Check if member has an image, otherwise use icon placeholder
             if (member.image) {
                 item.innerHTML = `
-                    <img src="${member.image}" alt="${member.name}" class="marquee-img">
+                    <img src="${member.image}" alt="${member.name}" class="marquee-img" loading="lazy">
                 `;
             } else {
                 item.innerHTML = `
@@ -198,11 +200,12 @@
             setTimeout(() => {
                 // Check if member has an image
                 const imageContent = member.image
-                    ? `<img src="${member.image}" alt="${member.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">`
+                    ? `<img src="${member.image}" alt="${member.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" loading="lazy">`
                     : `<div class="profile-placeholder"><i class="fa-solid ${member.icon}"></i></div>`;
 
                 display.innerHTML = `
-                    <div class="active-card-view">
+                    <div class="active-card-view ${member.special ? 'special-member' : ''}">
+                        ${member.special ? '<div class="special-badge">Core Team</div>' : ''}
                         <div class="profile-img-container">
                             ${imageContent}
                         </div>

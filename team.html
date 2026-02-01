@@ -32,6 +32,7 @@
                 <li><a href="activities.html">Activities</a></li>
                 <li><a href="resources.html">Resources</a></li>
                 <li><a href="team.html" class="active">Our Team</a></li>
+                <li><a href="newsletter.html">Newsletter</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li class="download-item"><a href="https://your-storage-provider.com/uhv-cell.apk"
                         class="btn-download-app"><i class="fa-solid fa-download"></i>
@@ -73,17 +74,18 @@
         // Function to create a profile card
         function createProfileCard(member, delay = 0) {
             const card = document.createElement('div');
-            card.className = 'profile-card fade-in';
+            card.className = member.special ? 'profile-card fade-in special-member' : 'profile-card fade-in';
             if (delay > 0) {
                 card.style.animationDelay = `${delay}s`;
             }
 
             // Check if member has an image
             const imageContent = member.image
-                ? `<img src="${member.image}" alt="${member.name}" style="width: 100%; height: 100%; object-fit: cover;">`
+                ? `<img src="${member.image}" alt="${member.name}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">`
                 : `<div class="profile-placeholder"><i class="fa-solid ${member.icon}"></i></div>`;
 
             card.innerHTML = `
+                ${member.special ? '<div class="special-badge">Core Team</div>' : ''}
                 <div class="profile-img-container">
                     ${imageContent}
                 </div>
@@ -129,13 +131,14 @@
                         <li><a href="activities.html">Activities</a></li>
                         <li><a href="resources.html">Resources</a></li>
                         <li><a href="team.html">Our Team</a></li>
+                        <li><a href="newsletter.html">Newsletter</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Contact Us</h4>
 
-                    <p style="color: #94a3b8;">raghavammab@nbkrist.org</p>
+                    <p style="color: #94a3b8;">uhvcell@nbkrist.org</p>
                     <p style="color: #94a3b8;">+91 89858 42025</p>
                     <p style="color: #94a3b8; margin-top: 10px;">Vidyanagar, Nellore District</p>
                 </div>

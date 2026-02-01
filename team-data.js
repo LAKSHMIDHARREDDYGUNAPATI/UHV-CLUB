@@ -24,7 +24,7 @@ const facultyCoordinators = [
     },
     {
         name: "Mr. K. Narendra",
-        role: "Co-Coordinator",
+        role: "UHV Co-Coordinator",
         detail: "Dept. of S&H",
         icon: "fa-user",
         image: "narendra.jpg"
@@ -38,6 +38,76 @@ const studentCoordinators = [
         detail: "",
         icon: "fa-graduation-cap",
         image: "varun.jpg"
+    },
+    {
+        name: "G.LAKSHMIDHAR REDDY",
+        role: "TECHNICAL COORDINATOR",
+        detail: "24KB1A05J4, CSE",
+        icon: "fa-code",
+        image: "lakshmidhar.png",
+        special: true
+    },
+    {
+        name: "M.Manoj",
+        role: "Technical Co-Coordinator",
+        detail: "",
+        icon: "fa-code-branch",
+        image: "manoj.jpg"
+    },
+    {
+        name: "K.Rithika Reddy",
+        role: "Skill Coordinator",
+        detail: "",
+        icon: "fa-pencil",
+        image: "rithika.jpg"
+    },
+    {
+        name: "V.Rakshitha Reddy",
+        role: "Skill Co-Coordinator",
+        detail: "",
+        icon: "fa-pencil-ruler",
+        image: "rakshitha.jpg"
+    },
+    {
+        name: "SK.Latheef",
+        role: "Skill Co-Coordinator",
+        detail: "",
+        icon: "fa-user-pen",
+        image: "latheef.jpg"
+    },
+    {
+        name: "Y.Mahidhar Reddy",
+        role: "Content Coordinator",
+        detail: "",
+        icon: "fa-file-lines",
+        image: "mahidhar.png"
+    },
+    {
+        name: "V.BRAMHANI",
+        role: "Student Co-Coordinator",
+        detail: "",
+        icon: "fa-user-graduate",
+        image: "bramhani.jpg"
+    },
+    {
+        name: "P.CHARUHAAINI",
+        role: "Student Co-Coordinator",
+        detail: "",
+        icon: "fa-user-graduate",
+        image: "charuhaaini.jpg"
+    },
+    {
+        name: "R.Mahesh",
+        role: "Technical Co-Coordinator",
+        detail: "",
+        icon: "fa-code-branch",
+        image: "mahesh.jpg"
+    },
+    {
+        name: "A.Ajay Kumar",
+        role: "Content Co-Coordinator",
+        detail: "",
+        icon: "fa-file-pen",
     },
 ];
 
