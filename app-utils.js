@@ -34,4 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    // 3. Auto-update Current Year
+    const yearElement = document.getElementById('current-year');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
 });

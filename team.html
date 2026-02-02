@@ -19,6 +19,7 @@
     <header>
         <div class="container navbar">
             <a href="index.html" class="logo">
+                <img src="second_logo.png" alt="Logo">
                 <img src="logo.jpg" alt="Logo">
                 <div class="logo-text">
                     <span>UHV CELL NBKRIST</span>
@@ -71,13 +72,17 @@
 
     <!-- Dynamic Profile Generation -->
     <script>
-        // Function to create a profile card
         function createProfileCard(member, delay = 0) {
             const card = document.createElement('div');
             card.className = member.special ? 'profile-card fade-in special-member' : 'profile-card fade-in';
             if (delay > 0) {
                 card.style.animationDelay = `${delay}s`;
             }
+
+            // Lead Badge logic: Role contains "Coordinator" but NOT "Co-Coordinator"
+            // Exclude Mrs. B. Raghavamma as requested
+            const roleLower = member.role.toLowerCase();
+            const isLead = roleLower.includes('coordinator') && !roleLower.includes('co-coordinator') && member.name !== "Mrs. B. Raghavamma";
 
             // Check if member has an image
             const imageContent = member.image
@@ -86,6 +91,7 @@
 
             card.innerHTML = `
                 ${member.special ? '<div class="special-badge">Core Team</div>' : ''}
+                ${isLead ? '<div class="lead-badge">Lead</div>' : ''}
                 <div class="profile-img-container">
                     ${imageContent}
                 </div>
@@ -103,10 +109,47 @@
             facultyGrid.appendChild(createProfileCard(member, index * 0.1));
         });
 
-        // Populate Student Coordinators
+        // Populate Student Coordinators with grouping
         const studentGrid = document.getElementById('studentGrid');
-        studentCoordinators.forEach((member, index) => {
-            studentGrid.appendChild(createProfileCard(member, index * 0.1));
+
+        // Grouping logic
+        const groups = {
+            'Technical': [],
+            'Student': [],
+            'Skill': [],
+            'Content': []
+        };
+
+        studentCoordinators.forEach(member => {
+            const role = member.role.toLowerCase();
+            if (role.includes('technical')) groups['Technical'].push(member);
+            else if (role.includes('skill')) groups['Skill'].push(member);
+            else if (role.includes('content')) groups['Content'].push(member);
+            else groups['Student'].push(member);
+        });
+
+        // Clear grid and append groups with row breaks if needed, 
+        // but the best way is to keep them in one grid with custom spacers or separate grids
+        // The user said "in each row", so I'll create separate containers or sub-grids.
+
+        studentGrid.style.display = 'block'; // Change from grid to block for manual row control
+
+        Object.keys(groups).forEach((groupName, gIndex) => {
+            if (groups[groupName].length === 0) return;
+
+            const groupTitle = document.createElement('h3');
+            groupTitle.textContent = groupName + " Team";
+            groupTitle.style.margin = "40px 0 20px 0";
+            groupTitle.style.fontSize = "1.5rem";
+            groupTitle.style.color = "var(--primary)";
+            studentGrid.appendChild(groupTitle);
+
+            const rowGrid = document.createElement('div');
+            rowGrid.className = 'grid-3';
+            groups[groupName].forEach((member, mIndex) => {
+                rowGrid.appendChild(createProfileCard(member, (gIndex * 0.3) + (mIndex * 0.1)));
+            });
+            studentGrid.appendChild(rowGrid);
         });
     </script>
 
@@ -116,7 +159,8 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <div class="logo" style="margin-bottom: 20px;">
-                        <img src="logo.jpg" style="border-radius: 50%;" alt="Logo">
+                        <img src="second_logo.png" alt="Logo">
+                        <img src="logo.jpg" alt="Logo">
                         <div class="logo-text">
                             <span>UHV CELL NBKRIST</span>
                             <span class="subtitle">UNIVERSAL HUMAN VALUES</span>
@@ -143,7 +187,7 @@
                     <p style="color: #94a3b8; margin-top: 10px;">Vidyanagar, Nellore District</p>
                 </div>
             </div>
-            <div class="copyright">&copy; 2025 UHV CELL NBKRIST.</div>
+            <div class="copyright">&copy; <span id="current-year">2026</span> UHV CELL NBKRIST.</div>
         </div>
     </footer>
 

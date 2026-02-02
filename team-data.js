@@ -32,20 +32,13 @@ const facultyCoordinators = [
 ];
 
 const studentCoordinators = [
-    {
-        name: "T. Varunemdhar Reddy",
-        role: "Student Coordinator",
-        detail: "",
-        icon: "fa-graduation-cap",
-        image: "varun.jpg"
-    },
+    // Technical Row
     {
         name: "G.LAKSHMIDHAR REDDY",
         role: "TECHNICAL COORDINATOR",
-        detail: "24KB1A05J4, CSE",
+        detail: "",
         icon: "fa-code",
-        image: "lakshmidhar.png",
-        special: true
+        image: "lakshmidhar.png"
     },
     {
         name: "M.Manoj",
@@ -54,6 +47,36 @@ const studentCoordinators = [
         icon: "fa-code-branch",
         image: "manoj.jpg"
     },
+    {
+        name: "R.Mahesh",
+        role: "Technical Co-Coordinator",
+        detail: "",
+        icon: "fa-code-branch",
+        image: "mahesh.jpg"
+    },
+    // Student Row
+    {
+        name: "T. Varunemdhar Reddy",
+        role: "Student Coordinator",
+        detail: "",
+        icon: "fa-graduation-cap",
+        image: "varun.jpg"
+    },
+    {
+        name: "V.BRAMHANI",
+        role: "Student Co-Coordinator",
+        detail: "",
+        icon: "fa-user-graduate",
+        image: "bramhani.jpg"
+    },
+    {
+        name: "P.CHARUHAAINI",
+        role: "Student Co-Coordinator",
+        detail: "",
+        icon: "fa-user-graduate",
+        image: "charuhaaini.jpg"
+    },
+    // Skill Row
     {
         name: "K.Rithika Reddy",
         role: "Skill Coordinator",
@@ -75,6 +98,7 @@ const studentCoordinators = [
         icon: "fa-user-pen",
         image: "latheef.jpg"
     },
+    // Content Row
     {
         name: "Y.Mahidhar Reddy",
         role: "Content Coordinator",
@@ -83,31 +107,18 @@ const studentCoordinators = [
         image: "mahidhar.png"
     },
     {
-        name: "V.BRAMHANI",
-        role: "Student Co-Coordinator",
-        detail: "",
-        icon: "fa-user-graduate",
-        image: "bramhani.jpg"
-    },
-    {
-        name: "P.CHARUHAAINI",
-        role: "Student Co-Coordinator",
-        detail: "",
-        icon: "fa-user-graduate",
-        image: "charuhaaini.jpg"
-    },
-    {
-        name: "R.Mahesh",
-        role: "Technical Co-Coordinator",
-        detail: "",
-        icon: "fa-code-branch",
-        image: "mahesh.jpg"
-    },
-    {
         name: "A.Ajay Kumar",
         role: "Content Co-Coordinator",
         detail: "",
         icon: "fa-file-pen",
+        image: "ajay_kumar.jpg"
+    },
+    {
+        name: "O.Penchal Das",
+        role: "Content Co-Coordinator",
+        detail: "",
+        icon: "fa-file-pen",
+        image: "penchal_das.jpg"
     },
 ];
 
