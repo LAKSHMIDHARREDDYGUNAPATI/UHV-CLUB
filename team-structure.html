@@ -95,11 +95,16 @@
     <header>
         <div class="container navbar">
             <a href="index.html" class="logo">
-                <img src="second_logo.png" alt="Logo">
-                <img src="logo.jpg" alt="Logo">
-                <div class="logo-text">
-                    <span>UHV CELL NBKRIST</span>
-                    <span class="subtitle">UNIVERSAL HUMAN VALUES</span>
+                <div class="logo-left-group">
+                    <img src="logo.jpg" alt="Logo" class="logo-main-img">
+                    <div class="logo-text">
+                        <span>UHV CELL NBKRIST</span>
+                        <span class="subtitle">UNIVERSAL HUMAN VALUES</span>
+                    </div>
+                </div>
+                <div class="second-logo-wrapper">
+                    <img src="second_logo.png" alt="Logo" class="logo-second-img">
+                    <span class="logo-caption">Correspondent</span>
                 </div>
             </a>
             <div class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
@@ -111,8 +116,7 @@
                 <li><a href="team.html">Our Team</a></li>
                 <li><a href="newsletter.html">Newsletter</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li class="download-item"><a href="https://your-storage-provider.com/uhv-cell.apk"
-                        class="btn-download-app"><i class="fa-solid fa-download"></i>
+                <li class="download-item"><a href="#" class="btn-download-app"><i class="fa-solid fa-download"></i>
                         Download App</a></li>
             </ul>
         </div>
@@ -172,15 +176,11 @@
                 roleColor = '#8ba1b3';
             }
 
-            // Lead Badge logic: Role contains "Coordinator" but NOT "Co-Coordinator"
-            // Exclude Mrs. B. Raghavamma as requested
-            const roleLower = member.role.toLowerCase();
-            const isLead = roleLower.includes('coordinator') && !roleLower.includes('co-coordinator') && member.name !== "Mrs. B. Raghavamma";
+            // Lead Badge removed as requested
 
             return `
                 <div class="member-box ${member.special ? 'special-member' : ''}" style="${style}; position: relative;">
                     ${member.special ? '<div class="special-badge">Core Team</div>' : ''}
-                    ${isLead ? '<div class="lead-badge">Lead</div>' : ''}
                     <div class="structure-member-card">
                         ${getMemberPhoto(member)}
                         <div>
@@ -281,16 +281,21 @@
     </script>
 
     <!-- Footer -->
-    <footer>
+        <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
                     <div class="logo" style="margin-bottom: 20px;">
-                        <img src="second_logo.png" alt="Logo">
-                        <img src="logo.jpg" alt="Logo">
-                        <div class="logo-text">
-                            <span>UHV CELL NBKRIST</span>
-                            <span class="subtitle">UNIVERSAL HUMAN VALUES</span>
+                        <div class="logo-left-group">
+                            <img src="logo.jpg" alt="Logo" class="logo-main-img">
+                            <div class="logo-text">
+                                <span>UHV CELL NBKRIST</span>
+                                <span class="subtitle">UNIVERSAL HUMAN VALUES</span>
+                            </div>
+                        </div>
+                        <div class="second-logo-wrapper">
+                            <img src="second_logo.png" alt="Logo" class="logo-second-img">
+                            <span class="logo-caption">Correspondent</span>
                         </div>
                     </div>
                 </div>
@@ -316,7 +321,6 @@
             <div class="copyright">&copy; <span id="current-year">2026</span> UHV CELL NBKRIST.</div>
         </div>
     </footer>
-
     <script src="admin.js"></script>
 </body>
 

@@ -19,11 +19,16 @@
     <header>
         <div class="container navbar">
             <a href="index.html" class="logo">
-                <img src="second_logo.png" alt="Logo">
-                <img src="logo.jpg" alt="Logo">
-                <div class="logo-text">
-                    <span>UHV CELL NBKRIST</span>
-                    <span class="subtitle">UNIVERSAL HUMAN VALUES</span>
+                <div class="logo-left-group">
+                    <img src="logo.jpg" alt="Logo" class="logo-main-img">
+                    <div class="logo-text">
+                        <span>UHV CELL NBKRIST</span>
+                        <span class="subtitle">UNIVERSAL HUMAN VALUES</span>
+                    </div>
+                </div>
+                <div class="second-logo-wrapper">
+                    <img src="second_logo.png" alt="Logo" class="logo-second-img">
+                    <span class="logo-caption">Correspondent</span>
                 </div>
             </a>
             <div class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
@@ -35,8 +40,7 @@
                 <li><a href="team.html" class="active">Our Team</a></li>
                 <li><a href="newsletter.html">Newsletter</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li class="download-item"><a href="https://your-storage-provider.com/uhv-cell.apk"
-                        class="btn-download-app"><i class="fa-solid fa-download"></i>
+                <li class="download-item"><a href="#" class="btn-download-app"><i class="fa-solid fa-download"></i>
                         Download App</a></li>
             </ul>
         </div>
@@ -79,10 +83,7 @@
                 card.style.animationDelay = `${delay}s`;
             }
 
-            // Lead Badge logic: Role contains "Coordinator" but NOT "Co-Coordinator"
-            // Exclude Mrs. B. Raghavamma as requested
-            const roleLower = member.role.toLowerCase();
-            const isLead = roleLower.includes('coordinator') && !roleLower.includes('co-coordinator') && member.name !== "Mrs. B. Raghavamma";
+            // Lead Badge removed as requested
 
             // Check if member has an image
             const imageContent = member.image
@@ -91,7 +92,6 @@
 
             card.innerHTML = `
                 ${member.special ? '<div class="special-badge">Core Team</div>' : ''}
-                ${isLead ? '<div class="lead-badge">Lead</div>' : ''}
                 <div class="profile-img-container">
                     ${imageContent}
                 </div>
@@ -112,10 +112,10 @@
         // Populate Student Coordinators with grouping
         const studentGrid = document.getElementById('studentGrid');
 
-        // Grouping logic
+        // Grouping logic (Reordered: Student first)
         const groups = {
-            'Technical': [],
             'Student': [],
+            'Technical': [],
             'Skill': [],
             'Content': []
         };
@@ -128,21 +128,20 @@
             else groups['Student'].push(member);
         });
 
-        // Clear grid and append groups with row breaks if needed, 
-        // but the best way is to keep them in one grid with custom spacers or separate grids
-        // The user said "in each row", so I'll create separate containers or sub-grids.
-
-        studentGrid.style.display = 'block'; // Change from grid to block for manual row control
+        studentGrid.style.display = 'block';
 
         Object.keys(groups).forEach((groupName, gIndex) => {
             if (groups[groupName].length === 0) return;
 
-            const groupTitle = document.createElement('h3');
-            groupTitle.textContent = groupName + " Team";
-            groupTitle.style.margin = "40px 0 20px 0";
-            groupTitle.style.fontSize = "1.5rem";
-            groupTitle.style.color = "var(--primary)";
-            studentGrid.appendChild(groupTitle);
+            // Remove "Student Team" heading as requested
+            if (groupName !== 'Student') {
+                const groupTitle = document.createElement('h3');
+                groupTitle.textContent = groupName + " Team";
+                groupTitle.style.margin = "40px 0 20px 0";
+                groupTitle.style.fontSize = "1.5rem";
+                groupTitle.style.color = "var(--primary)";
+                studentGrid.appendChild(groupTitle);
+            }
 
             const rowGrid = document.createElement('div');
             rowGrid.className = 'grid-3';
@@ -154,16 +153,21 @@
     </script>
 
     <!-- Footer -->
-    <footer>
+        <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
                     <div class="logo" style="margin-bottom: 20px;">
-                        <img src="second_logo.png" alt="Logo">
-                        <img src="logo.jpg" alt="Logo">
-                        <div class="logo-text">
-                            <span>UHV CELL NBKRIST</span>
-                            <span class="subtitle">UNIVERSAL HUMAN VALUES</span>
+                        <div class="logo-left-group">
+                            <img src="logo.jpg" alt="Logo" class="logo-main-img">
+                            <div class="logo-text">
+                                <span>UHV CELL NBKRIST</span>
+                                <span class="subtitle">UNIVERSAL HUMAN VALUES</span>
+                            </div>
+                        </div>
+                        <div class="second-logo-wrapper">
+                            <img src="second_logo.png" alt="Logo" class="logo-second-img">
+                            <span class="logo-caption">Correspondent</span>
                         </div>
                     </div>
                 </div>
@@ -181,7 +185,6 @@
                 </div>
                 <div class="footer-col">
                     <h4>Contact Us</h4>
-
                     <p style="color: #94a3b8;">uhvcell@nbkrist.org</p>
                     <p style="color: #94a3b8;">+91 89858 42025</p>
                     <p style="color: #94a3b8; margin-top: 10px;">Vidyanagar, Nellore District</p>
@@ -190,7 +193,6 @@
             <div class="copyright">&copy; <span id="current-year">2026</span> UHV CELL NBKRIST.</div>
         </div>
     </footer>
-
     <script src="admin.js"></script>
 </body>
 

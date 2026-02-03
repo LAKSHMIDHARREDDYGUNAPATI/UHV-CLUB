@@ -65,3 +65,6 @@ function checkAppMode() {
         });
     }
 }
+// Export functions to window for inline event handlers
+window.logoutAdmin = logoutAdmin;
+window.checkAdminStatus = checkAdminStatus;

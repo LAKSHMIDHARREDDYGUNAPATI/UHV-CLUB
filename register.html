@@ -16,8 +16,17 @@
     <header>
         <div class="container navbar">
             <a href="index.html" class="logo">
-                <img src="logo.jpg" alt="Logo">
-                <span>UHV CELL NBKRIST</span>
+                <div class="logo-left-group">
+                    <img src="logo.jpg" alt="Logo" class="logo-main-img">
+                    <div class="logo-text">
+                        <span>UHV CELL NBKRIST</span>
+                        <span class="subtitle">UNIVERSAL HUMAN VALUES</span>
+                    </div>
+                </div>
+                <div class="second-logo-wrapper">
+                    <img src="second_logo.png" alt="Logo" class="logo-second-img">
+                    <span class="logo-caption">Correspondent</span>
+                </div>
             </a>
             <!-- Minimal Nav for Login Page -->
             <ul class="nav-links">
@@ -68,65 +77,49 @@
         </div>
     </div>
 
-    <footer>
+                <footer>
         <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 20px;">
+                        <div class="logo-left-group">
+                            <img src="logo.jpg" alt="Logo" class="logo-main-img">
+                            <div class="logo-text">
+                                <span>UHV CELL NBKRIST</span>
+                                <span class="subtitle">UNIVERSAL HUMAN VALUES</span>
+                            </div>
+                        </div>
+                        <div class="second-logo-wrapper">
+                            <img src="second_logo.png" alt="Logo" class="logo-second-img">
+                            <span class="logo-caption">Correspondent</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="activities.html">Activities</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="newsletter.html">Newsletter</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p style="color: #94a3b8;">uhvcell@nbkrist.org</p>
+                    <p style="color: #94a3b8;">+91 89858 42025</p>
+                    <p style="color: #94a3b8; margin-top: 10px;">Vidyanagar, Nellore District</p>
+                </div>
+            </div>
             <div class="copyright">&copy; <span id="current-year">2026</span> UHV CELL NBKRIST.</div>
         </div>
     </footer>
-
     <script src="admin.js"></script>
-    <script>
-        document.getElementById('registerForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const firstName = document.getElementById('firstName').value;
-            const surname = document.getElementById('surname').value;
-            const username = document.getElementById('reg-username').value;
-            const password = document.getElementById('reg-password').value;
-            const confirmPassword = document.getElementById('confirm-password').value;
-            const errorMsg = document.getElementById('error-msg');
-
-            if (password !== confirmPassword) {
-                errorMsg.textContent = "Passwords do not match!";
-                errorMsg.style.display = 'block';
-                return;
-            }
-
-            if (password.length < 6) {
-                errorMsg.textContent = "Password must be at least 6 characters!";
-                errorMsg.style.display = 'block';
-                return;
-            }
-
-            // Simulate creating an account (In reality, this would check against a DB)
-            // Just for this demo, we can save it to localStorage
-            const newAdmin = {
-                firstName: firstName,
-                surname: surname,
-                username: username,
-                password: password // In real app, never store plain text passwords
-            };
-
-            // Get existing users or init empty array
-            const users = JSON.parse(localStorage.getItem('uhvAdminUsers') || '[]');
-
-            // Check if username exists
-            if (users.find(u => u.username === username)) {
-                errorMsg.textContent = "Username already exists!";
-                errorMsg.style.display = 'block';
-                return;
-            }
-
-            users.push(newAdmin);
-            localStorage.setItem('uhvAdminUsers', JSON.stringify(users));
-
-            alert('Registration Successful! Please login.');
-            window.location.href = 'login.html';
-        });
-    </script>
 </body>
 
 </html>
-
 
 

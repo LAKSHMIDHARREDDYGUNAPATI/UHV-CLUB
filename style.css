@@ -47,6 +47,33 @@
     --shadow-hover: 0 0 25px rgba(0, 243, 255, 0.2);
 }
 
+.is-app .download-item,
+.download-item {
+    display: none !important;
+    /* Temporarily disabled per user request */
+}
+
+.admin-mode [contenteditable="true"]:hover {
+    outline: 2px dashed var(--primary);
+    background: rgba(0, 243, 255, 0.05);
+}
+
+.admin-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--bg-surface);
+    border-bottom: 2px solid var(--primary);
+    padding: 10px 20px;
+    z-index: 9999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+
 /* Base Reset & Typography */
 * {
     margin: 0;
@@ -174,8 +201,7 @@ img {
     letter-spacing: 1px;
 }
 
-.special-badge,
-.lead-badge {
+.special-badge {
     position: absolute;
     top: 15px;
     right: 15px;
@@ -190,38 +216,95 @@ img {
     box-shadow: 0 0 10px var(--primary);
 }
 
-.lead-badge {
-    background: var(--secondary);
-    box-shadow: 0 0 10px var(--secondary);
-    top: 45px;
-    /* Offset if both exist, but usually only one */
-}
-
+/* Main Logo container gap */
 .logo {
     display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: flex-start;
+    gap: 15px;
+    /* Reduced gap to bring correspondent closer to text */
     font-weight: 700;
     font-size: 1.5rem;
     color: var(--white);
     letter-spacing: 1px;
+    text-decoration: none;
+    width: auto;
+    margin-right: auto;
 }
 
-.logo img {
+/* Inner group gap (Main Logo <-> Text) */
+.logo-left-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* Reduced gap to bring main logo closer to text */
+    margin-left: -20px;
+    /* Shift groups further left */
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+    flex-wrap: nowrap;
+    /* Force one line */
+    white-space: nowrap;
+    /* Prevent text wrapping */
+}
+
+.logo-main-img,
+.logo-second-img {
     height: 60px;
-    /* Reduced slightly to fit two logos better */
     width: 60px;
     object-fit: cover;
     border-radius: 50%;
     border: 2px solid var(--primary);
-    box-shadow: 0 0 10px var(--primary);
+    box-shadow: 0 0 15px var(--primary);
     transition: all 0.3s ease;
 }
 
-.logo img:hover {
+/* Removed specific secondary color override for correspondent styling */
+
+.second-logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.logo-caption {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    color: var(--primary);
+    /* Updated to primary theme color */
+    font-weight: 800;
+    margin-top: 2px;
+    letter-spacing: 1px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.1;
+}
+
+.logo-text span:first-child {
+    font-size: 1.2rem;
+    white-space: nowrap;
+}
+
+.logo-text .subtitle {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+.logo-main-img:hover,
+.logo-second-img:hover {
     transform: scale(1.1);
     box-shadow: 0 0 20px var(--primary);
 }
+
 
 .btn-secondary {
     background: transparent;
@@ -450,7 +533,7 @@ header {
 
 .grid-3 {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
 }
 
@@ -530,9 +613,63 @@ footer {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 60px;
+    /* Increased gap separates columns naturally */
     margin-bottom: 50px;
+}
+
+@media (max-width: 900px) {
+    .footer-grid {
+        gap: 40px;
+    }
+}
+
+footer .logo {
+    justify-content: flex-start;
+    gap: 50px;
+    /* Generous space between left-group and correspondent logo */
+    flex-wrap: nowrap;
+}
+
+footer .logo-left-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* Space between main logo and site name */
+    margin-left: -20px;
+}
+
+/* Removed specific padding shifts to rely on grid gap */
+
+.footer-col {
+    min-width: 0;
+    /* Prevent grid items from overflowing */
+}
+
+
+
+footer .logo-text span:first-child {
+    white-space: nowrap;
+    /* Force single line */
+}
+
+/* Ensure footer logos don't stack on mobile */
+@media (max-width: 768px) {
+    footer .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    footer .logo {
+        flex-wrap: wrap;
+        /* Only wrap on very narrow screens if necessary */
+    }
+}
+
+
+
+footer .logo-text .subtitle {
+    font-size: 0.7rem;
 }
 
 .footer-col h4 {
@@ -600,6 +737,26 @@ footer {
 
     .nav-links.active {
         transform: translateY(0);
+    }
+
+    @media (max-width: 480px) {
+        .logo-text span:first-child {
+            font-size: 1rem;
+        }
+
+        .logo-text .subtitle {
+            font-size: 0.6rem;
+        }
+
+        .logo-main-img,
+        .logo-second-img {
+            height: 45px;
+            width: 45px;
+        }
+
+        .logo {
+            gap: 8px;
+        }
     }
 
     .hero h1 {
@@ -914,4 +1071,31 @@ footer {
 .download-item,
 .btn-download-app {
     display: none !important;
+}
+
+/* Workshops Detailed View */
+.workshops-detailed-view h2.section-title {
+    font-size: 2.5rem;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+    .workshops-detailed-view h2.section-title {
+        font-size: 1.8rem;
+    }
+}
+
+.gallery-item.large-view img {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 243, 255, 0.1);
+    transition: transform 0.4s ease;
+}
+
+.gallery-item.large-view:hover img {
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 243, 255, 0.2);
 }

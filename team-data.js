@@ -11,7 +11,7 @@ const facultyCoordinators = [
     {
         name: "Dr. M. Srinivasulu",
         role: "Convener",
-        detail: "Dept. of Mechanical",
+        detail: "Principal, NBKRIST",
         icon: "fa-chalkboard-user",
         image: "srinivasulu.jpg"
     },
@@ -32,28 +32,6 @@ const facultyCoordinators = [
 ];
 
 const studentCoordinators = [
-    // Technical Row
-    {
-        name: "G.LAKSHMIDHAR REDDY",
-        role: "TECHNICAL COORDINATOR",
-        detail: "",
-        icon: "fa-code",
-        image: "lakshmidhar.png"
-    },
-    {
-        name: "M.Manoj",
-        role: "Technical Co-Coordinator",
-        detail: "",
-        icon: "fa-code-branch",
-        image: "manoj.jpg"
-    },
-    {
-        name: "R.Mahesh",
-        role: "Technical Co-Coordinator",
-        detail: "",
-        icon: "fa-code-branch",
-        image: "mahesh.jpg"
-    },
     // Student Row
     {
         name: "T. Varunemdhar Reddy",
@@ -75,6 +53,28 @@ const studentCoordinators = [
         detail: "",
         icon: "fa-user-graduate",
         image: "charuhaaini.jpg"
+    },
+    // Technical Row
+    {
+        name: "G.LAKSHMIDHAR REDDY",
+        role: "TECHNICAL COORDINATOR",
+        detail: "",
+        icon: "fa-code",
+        image: "lakshmidhar.png"
+    },
+    {
+        name: "M.Manoj",
+        role: "Technical Co-Coordinator",
+        detail: "",
+        icon: "fa-code-branch",
+        image: "manoj.jpg"
+    },
+    {
+        name: "R.Mahesh",
+        role: "Technical Co-Coordinator",
+        detail: "",
+        icon: "fa-code-branch",
+        image: "mahesh.jpg"
     },
     // Skill Row
     {

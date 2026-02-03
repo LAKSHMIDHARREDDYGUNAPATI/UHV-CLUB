@@ -19,11 +19,16 @@
     <header>
         <div class="container navbar">
             <a href="index.html" class="logo">
-                <img src="second_logo.png" alt="Logo">
-                <img src="logo.jpg" alt="Logo">
-                <div class="logo-text">
-                    <span>UHV CELL NBKRIST</span>
-                    <span class="subtitle">UNIVERSAL HUMAN VALUES</span>
+                <div class="logo-left-group">
+                    <img src="logo.jpg" alt="Logo" class="logo-main-img">
+                    <div class="logo-text">
+                        <span>UHV CELL NBKRIST</span>
+                        <span class="subtitle">UNIVERSAL HUMAN VALUES</span>
+                    </div>
+                </div>
+                <div class="second-logo-wrapper">
+                    <img src="second_logo.png" alt="Logo" class="logo-second-img">
+                    <span class="logo-caption">Correspondent</span>
                 </div>
             </a>
             <div class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
@@ -35,8 +40,7 @@
                 <li><a href="team.html">Our Team</a></li>
                 <li><a href="newsletter.html">Newsletter</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li class="download-item"><a href="https://your-storage-provider.com/uhv-cell.apk"
-                        class="btn-download-app"><i class="fa-solid fa-download"></i>
+                <li class="download-item"><a href="#" class="btn-download-app"><i class="fa-solid fa-download"></i>
                         Download App</a></li>
             </ul>
         </div>
@@ -115,16 +119,21 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+        <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
                     <div class="logo" style="margin-bottom: 20px;">
-                        <img src="second_logo.png" alt="Logo">
-                        <img src="logo.jpg" alt="Logo">
-                        <div class="logo-text">
-                            <span>UHV CELL NBKRIST</span>
-                            <span class="subtitle">UNIVERSAL HUMAN VALUES</span>
+                        <div class="logo-left-group">
+                            <img src="logo.jpg" alt="Logo" class="logo-main-img">
+                            <div class="logo-text">
+                                <span>UHV CELL NBKRIST</span>
+                                <span class="subtitle">UNIVERSAL HUMAN VALUES</span>
+                            </div>
+                        </div>
+                        <div class="second-logo-wrapper">
+                            <img src="second_logo.png" alt="Logo" class="logo-second-img">
+                            <span class="logo-caption">Correspondent</span>
                         </div>
                     </div>
                 </div>
@@ -142,7 +151,6 @@
                 </div>
                 <div class="footer-col">
                     <h4>Contact Us</h4>
-
                     <p style="color: #94a3b8;">uhvcell@nbkrist.org</p>
                     <p style="color: #94a3b8;">+91 89858 42025</p>
                     <p style="color: #94a3b8; margin-top: 10px;">Vidyanagar, Nellore District</p>
@@ -205,14 +213,9 @@
                     ? `<img src="${member.image}" alt="${member.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" loading="lazy">`
                     : `<div class="profile-placeholder"><i class="fa-solid ${member.icon}"></i></div>`;
 
-                // Lead Badge logic
-                const roleLower = member.role.toLowerCase();
-                const isLead = roleLower.includes('coordinator') && !roleLower.includes('co-coordinator') && member.name !== "Mrs. B. Raghavamma";
-
                 display.innerHTML = `
                     <div class="active-card-view ${member.special ? 'special-member' : ''}">
                         ${member.special ? '<div class="special-badge">Core Team</div>' : ''}
-                        ${isLead ? '<div class="lead-badge">Lead</div>' : ''}
                         <div class="profile-img-container">
                             ${imageContent}
                         </div>
@@ -238,3 +241,4 @@
 </body>
 
 </html>
+

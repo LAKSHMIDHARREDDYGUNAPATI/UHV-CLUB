@@ -61,11 +61,16 @@
     <header>
         <div class="container navbar">
             <a href="index.html" class="logo">
-                <img src="second_logo.png" alt="Logo">
-                <img src="logo.jpg" alt="Logo">
-                <div class="logo-text">
-                    <span>UHV CELL NBKRIST</span>
-                    <span class="subtitle">UNIVERSAL HUMAN VALUES</span>
+                <div class="logo-left-group">
+                    <img src="logo.jpg" alt="Logo" class="logo-main-img">
+                    <div class="logo-text">
+                        <span>UHV CELL NBKRIST</span>
+                        <span class="subtitle">UNIVERSAL HUMAN VALUES</span>
+                    </div>
+                </div>
+                <div class="second-logo-wrapper">
+                    <img src="second_logo.png" alt="Logo" class="logo-second-img">
+                    <span class="logo-caption">Correspondent</span>
                 </div>
             </a>
             <div class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
@@ -98,17 +103,21 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
                     <div class="logo" style="margin-bottom: 20px;">
-                        <img src="second_logo.png" alt="Logo">
-                        <img src="logo.jpg" alt="Logo">
-                        <div class="logo-text">
-                            <span>UHV CELL NBKRIST</span>
-                            <span class="subtitle">UNIVERSAL HUMAN VALUES</span>
+                        <div class="logo-left-group">
+                            <img src="logo.jpg" alt="Logo" class="logo-main-img">
+                            <div class="logo-text">
+                                <span>UHV CELL NBKRIST</span>
+                                <span class="subtitle">UNIVERSAL HUMAN VALUES</span>
+                            </div>
+                        </div>
+                        <div class="second-logo-wrapper">
+                            <img src="second_logo.png" alt="Logo" class="logo-second-img">
+                            <span class="logo-caption">Correspondent</span>
                         </div>
                     </div>
                 </div>
@@ -126,7 +135,6 @@
                 </div>
                 <div class="footer-col">
                     <h4>Contact Us</h4>
-
                     <p style="color: #94a3b8;">uhvcell@nbkrist.org</p>
                     <p style="color: #94a3b8;">+91 89858 42025</p>
                     <p style="color: #94a3b8; margin-top: 10px;">Vidyanagar, Nellore District</p>
@@ -136,123 +144,98 @@
         </div>
     </footer>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Gallery Data Logic
-            const params = new URLSearchParams(window.location.search);
-            const activityId = params.get('id');
+        const activityData = {
+            'activity-workshops': {
+                title: 'UHV Workshops Gallery',
+                desc: 'Capturing moments from our Level 1 & 2 value education workshops.',
+                images: [
+                    'sdg_day1_1.jpg', 'sdg_day1_2.jpg', 'sdg_day1_3.jpg', 'sdg_day1_4.jpg',
+                    'sdg_day2_1.jpg', 'sdg_day2_2.jpg',
+                    'sdg_day3_1.jpg', 'sdg_day3_2.jpg', 'sdg_day3_3.jpg'
+                ]
+            },
+            'activity-gd': {
+                title: 'Group Discussions Gallery',
+                desc: 'Dialogue and self-reflection sessions with students.',
+                images: 6 // Fallback to icons
+            },
+            'activity-talks': {
+                title: 'Expert Talks Gallery',
+                desc: 'Insights shared by invited resource persons.',
+                images: 4 // Fallback to icons
+            }
+        };
 
-            const titleEl = document.getElementById('gallery-title');
-            const descEl = document.getElementById('gallery-desc');
+        const urlParams = new URLSearchParams(window.location.search);
+        const activityId = urlParams.get('id');
+
+        if (activityId && activityData[activityId]) {
+            const data = activityData[activityId];
+            document.getElementById('gallery-title').textContent = data.title;
+            document.getElementById('gallery-desc').textContent = data.desc;
+
             const container = document.getElementById('gallery-container');
 
-            if (!activityId) {
-                container.innerHTML = '<p style="text-align:center;">Please select an activity from the Activities page.</p>';
-                return;
-            }
-
-            let title = "Gallery";
-            let desc = "Images from our events";
-
             if (activityId === 'activity-workshops') {
-                title = "UHV Workshops Gallery";
-                desc = "Memories from our Level 1 & 2 Workshops";
-
-                // Change grid to a single column list for "one by one align center"
-                container.className = 'gallery-list';
+                container.className = 'workshops-detailed-view';
                 container.style.display = 'flex';
                 container.style.flexDirection = 'column';
-                container.style.alignItems = 'center';
-                container.style.gap = '40px';
+                container.style.gap = '60px';
 
-                // --- DAY 1 ---
-                const h1 = document.createElement('h2');
-                h1.textContent = "DAY 1 SDG PANEL DISCUSSION";
-                h1.className = 'section-title';
-                h1.style.marginBottom = '20px';
-                container.appendChild(h1);
+                const sections = [
+                    {
+                        title: 'DAY 1 SDG PANEL DISCUSSION',
+                        // Moved 3rd image (sdg_day1_3.jpg) to 1st place
+                        images: ['sdg_day1_3.jpg', 'sdg_day1_1.jpg', 'sdg_day1_2.jpg', 'sdg_day1_4.jpg'],
+                        color: 'var(--primary)' // Cyan
+                    },
+                    {
+                        title: 'DAY 2 WORKSHOP SESSIONS',
+                        images: ['sdg_day2_1.jpg', 'sdg_day2_2.jpg'],
+                        color: 'var(--secondary)' // Magenta
+                    },
+                    {
+                        title: 'DAY 3 CONCLUDING CEREMONY',
+                        images: ['sdg_day3_1.jpg', 'sdg_day3_2.jpg', 'sdg_day3_3.jpg'],
+                        color: '#a855f7' // Purple Accent
+                    }
+                ];
 
-                const day1Images = ['sdg_day1_3.jpg', 'sdg_day1_1.jpg', 'sdg_day1_2.jpg', 'sdg_day1_4.jpg'];
-                day1Images.forEach((src, i) => {
-                    const img = document.createElement('img');
-                    img.src = src;
-                    img.className = 'fade-in';
-                    img.style.width = '100%';
-                    img.style.maxWidth = '800px';
-                    img.style.borderRadius = '12px';
-                    img.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
-                    img.style.animationDelay = (i * 0.1) + 's';
-                    container.appendChild(img);
+                sections.forEach(section => {
+                    const sectionDiv = document.createElement('div');
+                    let imagesHtml = '';
+                    section.images.forEach(img => {
+                        imagesHtml += '<div class="gallery-item large-view fade-in" style="height: auto; aspect-ratio: 16/9; width: 100%; max-width: 900px; margin: 0 auto; padding: 0;">' +
+                            '<img src="' + img + '" alt="' + section.title + '" style="width:100%; height:100%; object-fit:cover; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">' +
+                            '</div>';
+                    });
+
+                    // Use specific section color for the heading
+                    sectionDiv.innerHTML = '<h2 class="section-title fade-in" style="margin-bottom:30px; color: ' + section.color + '; text-shadow: 0 0 20px ' + section.color + '; text-transform: uppercase;">' + section.title + '</h2>' +
+                        '<div style="display: flex; flex-direction: column; gap: 30px;">' + imagesHtml + '</div>';
+                    container.appendChild(sectionDiv);
                 });
-
-                // --- DAY 2 ---
-                const h2 = document.createElement('h2');
-                h2.textContent = "DAY 2 SDG PANEL DISCUSSION";
-                h2.className = 'section-title';
-                h2.style.marginTop = '60px';
-                h2.style.marginBottom = '20px';
-                container.appendChild(h2);
-
-                const day2Images = ['sdg_day2_1.jpg', 'sdg_day2_2.jpg'];
-                day2Images.forEach((src, i) => {
-                    const img = document.createElement('img');
-                    img.src = src;
-                    img.className = 'fade-in';
-                    img.style.width = '100%';
-                    img.style.maxWidth = '800px';
-                    img.style.borderRadius = '12px';
-                    img.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
-                    img.style.animationDelay = (i * 0.1) + 's';
-                    container.appendChild(img);
-                });
-
-                // --- DAY 3 ---
-                const h3 = document.createElement('h2');
-                h3.textContent = "DAY 3 SDG PANEL DISCUSSION";
-                h3.className = 'section-title';
-                h3.style.marginTop = '60px';
-                h3.style.marginBottom = '20px';
-                container.appendChild(h3);
-
-                const day3Images = ['sdg_day3_1.jpg', 'sdg_day3_2.jpg', 'sdg_day3_3.jpg'];
-                day3Images.forEach((src, i) => {
-                    const img = document.createElement('img');
-                    img.src = src;
-                    img.className = 'fade-in';
-                    img.style.width = '100%';
-                    img.style.maxWidth = '800px';
-                    img.style.borderRadius = '12px';
-                    img.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
-                    img.style.animationDelay = (i * 0.1) + 's';
-                    container.appendChild(img);
-                });
-
-            } else if (activityId === 'activity-gd') {
-                title = "Group Discussions";
-                desc = "Students engaging in value-based dialogues";
-                populatePlaceholders(6);
-            } else if (activityId === 'activity-talks') {
-                title = "Expert Talks";
-                desc = "Sessions by renowned resource persons";
-                populatePlaceholders(4);
-            }
-
-            titleEl.textContent = title;
-            descEl.textContent = desc;
-
-            function populatePlaceholders(count) {
-                for (let i = 0; i < count; i++) {
+            } else {
+                // Default grid view for others
+                const total = Array.isArray(data.images) ? data.images.length : data.images;
+                for (let i = 0; i < total; i++) {
                     const item = document.createElement('div');
                     item.className = 'gallery-item fade-in';
-                    item.style.animationDelay = (i * 0.1) + 's';
+                    item.style.animationDelay = `${i * 0.1}s`;
+
+                    if (Array.isArray(data.images)) {
+                        item.innerHTML = `<img src="${data.images[i]}" alt="Gallery Image ${i + 1}" style="width:100%; height:100%; object-fit:cover;">`;
+                        item.style.padding = '0';
+                    }
+
+                    item.title = `Gallery Image ${i + 1}`;
                     container.appendChild(item);
                 }
             }
-        });
+        }
+
     </script>
     <script src="admin.js"></script>
 </body>
 
 </html>
-
-
-
