@@ -54,6 +54,13 @@ const studentCoordinators = [
         icon: "fa-user-graduate",
         image: "charuhaaini.jpg"
     },
+    {
+        name: "N.Prathyush",
+        role: "Student Co-Coordinator",
+        detail: "",
+        icon: "fa-user-graduate",
+        image: "prathyush.jpg"
+    },
     // Technical Row
     {
         name: "G.LAKSHMIDHAR REDDY",
@@ -119,6 +126,13 @@ const studentCoordinators = [
         detail: "",
         icon: "fa-file-pen",
         image: "penchal_das.jpg"
+    },
+    {
+        name: "P.Lokanadh",
+        role: "Content Co-Coordinator",
+        detail: "",
+        icon: "fa-file-pen",
+        image: "lokanadh.jpg"
     },
 ];
 

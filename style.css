@@ -38,8 +38,10 @@
     --border-glow: 1px solid rgba(0, 243, 255, 0.3);
 
     /* Layout */
-    --container-width: 1200px;
-    --header-height: 100px;
+    --container-width: 1350px;
+    /* Increased to give header more room */
+    --header-height: 110px;
+    /* Slightly taller for the new correspondent layout */
     --radius: 16px;
 
     /* Shadows */
@@ -47,10 +49,9 @@
     --shadow-hover: 0 0 25px rgba(0, 243, 255, 0.2);
 }
 
-.is-app .download-item,
-.download-item {
+/* Download button - hidden in app via user-agent detection */
+.is-app .download-item {
     display: none !important;
-    /* Temporarily disabled per user request */
 }
 
 .admin-mode [contenteditable="true"]:hover {
@@ -216,40 +217,58 @@ img {
     box-shadow: 0 0 10px var(--primary);
 }
 
-/* Main Logo container gap */
+/* Navigation & Logo Layout Consolidating here */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
 .logo {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    gap: 15px;
-    /* Reduced gap to bring correspondent closer to text */
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: var(--white);
-    letter-spacing: 1px;
+    gap: 35px;
+    /* Generous space between logo-group and correspondent */
     text-decoration: none;
-    width: auto;
-    margin-right: auto;
+    flex-shrink: 0;
+    color: var(--white);
 }
 
-/* Inner group gap (Main Logo <-> Text) */
 .logo-left-group {
     display: flex;
     align-items: center;
-    gap: 15px;
-    /* Reduced gap to bring main logo closer to text */
-    margin-left: -20px;
-    /* Shift groups further left */
+    gap: 12px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.2;
+}
+
+.logo-text span:first-child {
+    font-size: 1.4rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.logo-text .subtitle {
+    font-size: 0.7rem;
+    color: var(--primary);
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
 }
 
 .nav-links {
     display: flex;
-    gap: 25px;
+    gap: 20px;
     list-style: none;
     flex-wrap: nowrap;
-    /* Force one line */
     white-space: nowrap;
-    /* Prevent text wrapping */
+    align-items: center;
 }
 
 .logo-main-img,
@@ -269,35 +288,32 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2px;
+    gap: 0;
+}
+
+.correspondent-name {
+    font-size: 0.65rem;
+    /* Increased size to match caption better */
+    text-transform: uppercase;
+    color: var(--white);
+    font-weight: 700;
+    margin-top: 5px;
+    /* Space from logo */
+    letter-spacing: 1px;
+    opacity: 1;
 }
 
 .logo-caption {
-    font-size: 0.65rem;
+    font-size: 0.55rem;
+    /* Slightly smaller for the role */
     text-transform: uppercase;
     color: var(--primary);
-    /* Updated to primary theme color */
     font-weight: 800;
-    margin-top: 2px;
-    letter-spacing: 1px;
+    margin-top: 1px;
+    /* Tighter spacing below name */
+    letter-spacing: 1.5px;
 }
 
-.logo-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    line-height: 1.1;
-}
-
-.logo-text span:first-child {
-    font-size: 1.2rem;
-    white-space: nowrap;
-}
-
-.logo-text .subtitle {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-}
 
 .logo-main-img:hover,
 .logo-second-img:hover {
@@ -364,38 +380,7 @@ header {
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-}
-
-.logo-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    line-height: 1.2;
-}
-
-.logo-text span:first-child {
-    font-size: 1.5rem;
-    font-weight: 700;
-}
-
-.logo-text .subtitle {
-    font-size: 0.75rem;
-    color: var(--primary);
-    font-weight: 500;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    text-shadow: 0 0 5px rgba(0, 243, 255, 0.3);
-}
-
-.nav-links {
-    display: flex;
-    gap: 30px;
-}
+/* Consolidated above */
 
 .nav-links a {
     font-weight: 500;
@@ -1068,10 +1053,6 @@ footer .logo-text .subtitle {
 }
 
 /* Temporarily disable download button globally */
-.download-item,
-.btn-download-app {
-    display: none !important;
-}
 
 /* Workshops Detailed View */
 .workshops-detailed-view h2.section-title {
