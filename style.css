@@ -38,10 +38,10 @@
     --border-glow: 1px solid rgba(0, 243, 255, 0.3);
 
     /* Layout */
-    --container-width: 1350px;
-    /* Increased to give header more room */
-    --header-height: 110px;
-    /* Slightly taller for the new correspondent layout */
+    --container-width: 1550px;
+    /* Further increased for maximum room */
+    --header-height: 120px;
+    /* Slightly taller for more vertical breathing room */
     --radius: 16px;
 
     /* Shadows */
@@ -228,8 +228,8 @@ img {
 .logo {
     display: flex;
     align-items: center;
-    gap: 35px;
-    /* Generous space between logo-group and correspondent */
+    gap: 60px;
+    /* Generous space between site identity and correspondent */
     text-decoration: none;
     flex-shrink: 0;
     color: var(--white);
@@ -238,7 +238,8 @@ img {
 .logo-left-group {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 15px;
+    /* Clean gap between icon and text */
 }
 
 .logo-text {
@@ -249,26 +250,31 @@ img {
 }
 
 .logo-text span:first-child {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
+    /* Restored size */
     font-weight: 700;
     white-space: nowrap;
 }
 
 .logo-text .subtitle {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
+    /* Restored size */
     color: var(--primary);
     font-weight: 500;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     text-transform: uppercase;
 }
 
 .nav-links {
     display: flex;
-    gap: 20px;
+    gap: 30px;
+    /* Generous spacing between nav items */
     list-style: none;
     flex-wrap: nowrap;
     white-space: nowrap;
     align-items: center;
+    margin-left: 40px;
+    /* Push nav away from logo group for clarity */
 }
 
 .logo-main-img,
@@ -301,6 +307,8 @@ img {
     /* Space from logo */
     letter-spacing: 1px;
     opacity: 1;
+    white-space: nowrap;
+    /* Force single line */
 }
 
 .logo-caption {
