@@ -78,34 +78,34 @@
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features">
+    <!-- What's New Section (Syncs with posters-data.js) -->
+    <section class="section" style="padding: 80px 0; background: rgba(0, 243, 255, 0.02);">
         <div class="container">
-            <div class="header-glow"
-                style="text-align: center; margin-bottom: 60px; background: transparent; border: none;">
-                <h2 class="section-title">Why UHV?</h2>
-                <p class="section-subtitle">Fostering harmony in self, family, society, and nature.</p>
+            <div class="header-glow" style="text-align: center; margin-bottom: 50px;">
+                <h2 class="section-title">What's New?</h2>
+                <p class="section-subtitle">Latest activities and event posters</p>
             </div>
+            <div id="latestPostersGrid" class="grid-3" style="margin-top: 30px;">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </section>
 
-            <div class="grid-3">
-                <div class="card fade-in" style="animation-delay: 0.2s;">
-                    <div class="card-icon"><i class="fa-solid fa-seedling"></i></div>
-                    <h3>Holistic Growth</h3>
-                    <p>Develop a comprehensive understanding of human reality and existence through self-exploration.
-                    </p>
+    <!-- Videos Section (Syncs with videos-data.js) -->
+    <section class="section" style="padding: 80px 0;">
+        <div class="container">
+            <div
+                style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px; flex-wrap: wrap; gap: 20px;">
+                <div style="flex: 1; min-width: 250px;">
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 10px;">Videos</h2>
+                    <p class="section-subtitle" style="text-align: left; margin: 0;">Featured learning resources and
+                        sessions</p>
                 </div>
-
-                <div class="card fade-in" style="animation-delay: 0.4s;">
-                    <div class="card-icon"><i class="fa-solid fa-hands-holding-circle"></i></div>
-                    <h3>Harmony & Peace</h3>
-                    <p>Learn to live in harmony with oneself, family, society, and the natural environment.</p>
-                </div>
-
-                <div class="card fade-in" style="animation-delay: 0.6s;">
-                    <div class="card-icon"><i class="fa-solid fa-lightbulb"></i></div>
-                    <h3>Ethical Living</h3>
-                    <p>Cultivate values that lead to a fulfilling, meaningful, and responsible life.</p>
-                </div>
+                <a href="videos.html" class="btn btn-secondary">View All Videos <i class="fa-solid fa-arrow-right"
+                        style="margin-left: 8px;"></i></a>
+            </div>
+            <div id="homeVideoGrid" class="grid-3">
+                <!-- Dynamically populated -->
             </div>
         </div>
     </section>
@@ -252,6 +252,8 @@
         });
     </script>
     <script src="posters-data.js"></script>
+    <script src="videos-data.js"></script>
+
     <script>
         // Poster Slider Logic
         const sliderTrack = document.getElementById('sliderTrack');
@@ -312,8 +314,51 @@
             }, 5000);
         }
 
+
+        function initHomeSync() {
+            // Sync Posters (What's New) - Show latest 4 in a professional grid
+            const posterGrid = document.getElementById('latestPostersGrid');
+            if (typeof posterImages !== 'undefined' && posterGrid) {
+                const latestPosters = posterImages.slice(-4).reverse();
+                posterGrid.innerHTML = latestPosters.map((poster, index) => `
+                    <div class="card fade-in" style="padding: 0; overflow: hidden; animation-delay: ${index * 0.1}s; border: 1px solid rgba(0, 243, 255, 0.1);">
+                        <div style="position: relative; overflow: hidden; aspect-ratio: 3/4;">
+                            <img src="${poster.url}" alt="${poster.title}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                            <div style="position: absolute; top: 10px; right: 10px; background: var(--primary); color: #000; padding: 4px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 700;">NEW</div>
+                        </div>
+                        <div style="padding: 15px; background: var(--bg-surface);">
+                            <h3 style="font-size: 1rem; margin-bottom: 5px; color: var(--white);">${poster.title}</h3>
+                            <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">${poster.description}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Sync Videos - Thumbnail Gallery style
+            const videoGrid = document.getElementById('homeVideoGrid');
+            if (typeof videoResources !== 'undefined' && videoGrid) {
+                const homeVideos = videoResources.slice(0, 3);
+                videoGrid.innerHTML = homeVideos.map((video, index) => `
+                    <div class="card fade-in" style="padding: 0; overflow: hidden; animation-delay: ${index * 0.2}s; border: 1px solid rgba(0, 243, 255, 0.15);">
+                         <div style="aspect-ratio: 16/9; background: #000; display: flex; align-items: center; justify-content: center; position: relative; cursor: pointer;">
+                            <img src="${video.thumbnail}" alt="${video.title}" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+                            <div style="position: absolute; inset: 0; background: radial-gradient(circle, transparent 30%, rgba(0,0,0,0.5));"></div>
+                            <div style="width: 50px; height: 50px; background: rgba(0, 243, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); border: 1px solid var(--primary); z-index: 2;">
+                                <i class="fa-solid fa-play" style="font-size: 1.2rem; color: var(--primary);"></i>
+                            </div>
+                             <div style="position: absolute; bottom: 0; width: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.9)); padding: 15px; z-index: 3;">
+                                <strong style="display: block; font-size: 0.9rem; color: var(--white);">${video.title}</strong>
+                                <span style="font-size: 0.7rem; color: var(--primary); text-transform: uppercase; letter-spacing: 1px;">${video.type || 'Resource'}</span>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
             initSlider();
+            initHomeSync();
         });
     </script>
     <script src="admin.js"></script>

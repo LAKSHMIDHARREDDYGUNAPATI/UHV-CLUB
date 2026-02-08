@@ -62,53 +62,53 @@
                 style="background: var(--bg-surface); padding: 40px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); margin-top: 20px;">
                 <h2 style="margin-bottom: 30px;">Featured Resources & Talks</h2>
 
-                <!-- Placeholder for Video Grid -->
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                    <div class="card fade-in" style="padding: 0; overflow: hidden;">
-                        <div
-                            style="aspect-ratio: 16/9; background: #000; display: flex; align-items: center; justify-content: center; position: relative;">
-                            <i class="fa-solid fa-play-circle"
-                                style="font-size: 3.5rem; color: var(--primary); cursor: pointer;"></i>
-                            <div
-                                style="position: absolute; bottom: 0; width: 100%; background: rgba(0,0,0,0.8); padding: 10px; font-size: 0.9rem;">
-                                <strong>Lecture 1: Introduction to UHV</strong>
-                                <p style="font-size: 0.75rem; color: #94a3b8;">Basic aspirations and their fulfillment.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card fade-in" style="padding: 0; overflow: hidden; animation-delay: 0.2s;">
-                        <div
-                            style="aspect-ratio: 16/9; background: #000; display: flex; align-items: center; justify-content: center; position: relative;">
-                            <i class="fa-solid fa-play-circle"
-                                style="font-size: 3.5rem; color: var(--secondary); cursor: pointer;"></i>
-                            <div
-                                style="position: absolute; bottom: 0; width: 100%; background: rgba(0,0,0,0.8); padding: 10px; font-size: 0.9rem;">
-                                <strong>Interaction: Harmony in Family</strong>
-                                <p style="font-size: 0.75rem; color: #94a3b8;">Understanding trust and respect.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card fade-in" style="padding: 0; overflow: hidden; animation-delay: 0.4s;">
-                        <div
-                            style="aspect-ratio: 16/9; background: #000; display: flex; align-items: center; justify-content: center; position: relative;">
-                            <i class="fa-solid fa-play-circle"
-                                style="font-size: 3.5rem; color: var(--accent); cursor: pointer;"></i>
-                            <div
-                                style="position: absolute; bottom: 0; width: 100%; background: rgba(0,0,0,0.8); padding: 10px; font-size: 0.9rem;">
-                                <strong>Expert Talk: Role of Values in Engineering</strong>
-                                <p style="font-size: 0.75rem; color: #94a3b8;">Guest session by Dr. Kumar.</p>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Dynamic Video Grid -->
+                <div id="videoGrid"
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                    <!-- Videos will be injected here -->
                 </div>
 
             </div>
         </div>
     </section>
 
+    <script src="videos-data.js"></script>
+    <script>
+        function createVideoCard(video, index) {
+            const card = document.createElement('div');
+            card.className = 'card fade-in';
+            card.style.padding = '0';
+            card.style.overflow = 'hidden';
+            card.style.animationDelay = `${index * 0.2}s`;
+
+            card.innerHTML = `
+                <div style="aspect-ratio: 16/9; background: #000; display: flex; align-items: center; justify-content: center; position: relative;">
+                    <img src="${video.thumbnail}" alt="${video.title}" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;">
+                    <i class="fa-solid fa-play-circle" style="font-size: 3.5rem; color: var(--primary); cursor: pointer; position: absolute; z-index: 2;"></i>
+                    <div style="position: absolute; bottom: 0; width: 100%; background: rgba(0,0,0,0.8); padding: 10px; font-size: 0.9rem; z-index: 3;">
+                        <strong>${video.title}</strong>
+                        <p style="font-size: 0.75rem; color: #94a3b8; margin: 5px 0 0 0;">${video.description}</p>
+                    </div>
+                </div>
+            `;
+
+            return card;
+        }
+
+        const grid = document.getElementById('videoGrid');
+        if (typeof videoResources !== 'undefined') {
+            videoResources.forEach((video, index) => {
+                grid.appendChild(createVideoCard(video, index));
+            });
+        }
+    </script>
+
+    </div>
+    </div>
+    </section>
+
     <!-- Footer -->
-        <footer>
+    <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
@@ -121,10 +121,10 @@
                             </div>
                         </div>
                         <div class="second-logo-wrapper">
-                    <img src="second_logo.png" alt="Logo" class="logo-second-img">
-                    <span class="correspondent-name">SRI N.RAM KUMAR</span>
-                    <span class="logo-caption">Correspondent</span>
-                </div>
+                            <img src="second_logo.png" alt="Logo" class="logo-second-img">
+                            <span class="correspondent-name">SRI N.RAM KUMAR</span>
+                            <span class="logo-caption">Correspondent</span>
+                        </div>
                     </div>
                 </div>
                 <div class="footer-col">

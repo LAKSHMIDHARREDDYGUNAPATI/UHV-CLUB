@@ -110,7 +110,8 @@ img {
 .container {
     max-width: var(--container-width);
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 40px;
+    /* Increased padding to move elements away from very edge */
 }
 
 .btn {
@@ -229,8 +230,8 @@ img {
 .logo {
     display: flex;
     align-items: center;
-    gap: 60px;
-    /* Generous space between site identity and correspondent */
+    gap: 40px;
+    /* Reduced from 60px to move elements left */
     text-decoration: none;
     flex-shrink: 0;
     color: var(--white);
@@ -268,14 +269,14 @@ img {
 
 .nav-links {
     display: flex;
-    gap: 30px;
-    /* Generous spacing between nav items */
+    gap: 20px;
+    /* Reduced from 30px */
     list-style: none;
     flex-wrap: nowrap;
     white-space: nowrap;
     align-items: center;
-    margin-left: 40px;
-    /* Push nav away from logo group for clarity */
+    margin-left: 20px;
+    /* Reduced from 40px */
 }
 
 .logo-main-img,
@@ -841,7 +842,9 @@ footer .logo-text .subtitle {
     .poster-slider-container {
         height: 300px;
         width: 100%;
-        border-radius: 0;
+        border-radius: 24px;
+        /* Restored original rounded corners */
+        border: 2px solid rgba(0, 243, 255, 0.3);
     }
 
     .slider-caption h4 {
