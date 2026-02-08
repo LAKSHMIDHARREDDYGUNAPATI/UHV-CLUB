@@ -49,6 +49,18 @@
 
     <script src="app-utils.js"></script>
 
+    <!-- Top Image Slider Section -->
+    <section class="slider-section">
+        <div class="poster-slider-container" id="posterSlider">
+            <div class="slider-track" id="sliderTrack"></div>
+            <div class="slider-nav">
+                <button class="slider-btn prev" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="slider-btn next" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            <div class="slider-dots" id="sliderDots"></div>
+        </div>
+    </section>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-bg"></div>
@@ -58,7 +70,7 @@
                 <h1>Empowering Minds with <br><span>Universal Human Values</span></h1>
                 <p>Join us in a journey of self-exploration and holistic development. We strive to nurture responsible
                     and ethical individuals for a harmonious society.</p>
-                <div style="display: flex; gap: 20px;">
+                <div class="btn-group">
                     <a href="team-structure.html" class="btn btn-primary">Discover More</a>
                     <a href="registration.html" class="btn btn-secondary">Join Us</a>
                 </div>
@@ -120,7 +132,7 @@
     </section>
 
     <!-- Footer -->
-        <footer>
+    <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
@@ -133,10 +145,10 @@
                             </div>
                         </div>
                         <div class="second-logo-wrapper">
-                    <img src="second_logo.png" alt="Logo" class="logo-second-img">
-                    <span class="correspondent-name">SRI N.RAM KUMAR</span>
-                    <span class="logo-caption">Correspondent</span>
-                </div>
+                            <img src="second_logo.png" alt="Logo" class="logo-second-img">
+                            <span class="correspondent-name">SRI N.RAM KUMAR</span>
+                            <span class="logo-caption">Correspondent</span>
+                        </div>
                     </div>
                 </div>
                 <div class="footer-col">
@@ -239,8 +251,72 @@
             track.style.animationPlayState = 'running';
         });
     </script>
+    <script src="posters-data.js"></script>
+    <script>
+        // Poster Slider Logic
+        const sliderTrack = document.getElementById('sliderTrack');
+        const sliderDots = document.getElementById('sliderDots');
+        let currentSlide = 0;
+        let slideInterval;
+
+        function initSlider() {
+            if (typeof posterImages === 'undefined' || posterImages.length === 0) return;
+
+            // Create slides
+            sliderTrack.innerHTML = posterImages.map(poster => `
+                <div class="slider-slide">
+                    <img src="${poster.url}" alt="${poster.title}" loading="lazy">
+                    <div class="slider-caption">
+                        <h4>${poster.title}</h4>
+                        <p>${poster.description}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            // Create dots
+            sliderDots.innerHTML = posterImages.map((_, index) => `
+                <div class="slider-dot ${index === 0 ? 'active' : ''}" onclick="goToSlide(${index})"></div>
+            `).join('');
+
+            // Nav buttons
+            document.getElementById('prevBtn').onclick = () => moveSlide(-1);
+            document.getElementById('nextBtn').onclick = () => moveSlide(1);
+
+            startSlideShow();
+        }
+
+        function moveSlide(direction) {
+            currentSlide = (currentSlide + direction + posterImages.length) % posterImages.length;
+            goToSlide(currentSlide);
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            // Update dots
+            const dots = document.querySelectorAll('.slider-dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+
+            // Reset interval
+            clearInterval(slideInterval);
+            startSlideShow();
+        }
+
+        function startSlideShow() {
+            slideInterval = setInterval(() => {
+                currentSlide = (currentSlide + 1) % posterImages.length;
+                goToSlide(currentSlide);
+            }, 5000);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initSlider();
+        });
+    </script>
     <script src="admin.js"></script>
 </body>
 
 </html>
-
