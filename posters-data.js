@@ -5,28 +5,23 @@
 
 const posterImages = [
     {
-        url: "second_logo.png",
-        title: "Sri N. Ram Kumar - Correspondent",
-        description: "Leading with vision and values."
+        url: "poster1.jpg",
+        title: "Inaugural Ceremony - Poster 1",
+        description: "Official poster for the UHV Cell Inaugural Ceremony."
     },
     {
-        url: "logo.jpg",
-        title: "Universal Human Values",
-        description: "Existence is Co-existence."
+        url: "poster2.jpg",
+        title: "Inaugural Ceremony - Poster 2",
+        description: "Universal Human Values Cell Launch Events."
     },
     {
-        url: "sdg_day1_1.jpg",
-        title: "UHV Workshop Session",
-        description: "Engaging students in self-exploration."
+        url: "poster3.jpg",
+        title: "Inaugural Ceremony - Poster 3",
+        description: "Join us for the Nodal Centre inauguration."
     },
     {
-        url: "sdg_day1_2.jpg",
-        title: "Workshop Interaction",
-        description: "Fostering harmony and understanding."
-    },
-    {
-        url: "sdg_day2_1.jpg",
-        title: "UHV Webinar",
-        description: "Connecting experts and enthusiasts online."
+        url: "poster4.jpg",
+        title: "Inaugural Ceremony - Poster 4",
+        description: "Building a harmonious society together."
     }
 ];

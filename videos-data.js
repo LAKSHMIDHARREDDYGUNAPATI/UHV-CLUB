@@ -1,23 +1,23 @@
 const videoResources = [
     {
-        title: "Lecture 1: Introduction to UHV",
-        description: "Basic aspirations and their fulfillment.",
-        thumbnail: "logo.jpg", // Placeholder thumbnail
-        videoUrl: "https://www.youtube.com/embed/example1",
-        type: "Lecture"
+        title: "The Deadline Disaster",
+        description: "A short film on managing time and values.",
+        thumbnail: "logo.jpg",
+        videoUrl: "https://drive.google.com/file/d/1PV4OlM0Hsrdq_nUOWPsugxtIqrOaEjsa/preview",
+        type: "Short Film"
     },
     {
-        title: "Interaction: Harmony in Family",
-        description: "Understanding trust and respect.",
-        thumbnail: "logo.jpg", // Placeholder thumbnail
-        videoUrl: "https://www.youtube.com/embed/example2",
-        type: "Interaction"
+        title: "Change Begins WithIn",
+        description: "Exploring personal transformation.",
+        thumbnail: "logo.jpg",
+        videoUrl: "https://drive.google.com/file/d/1iNLWrr2fXi1A07cpOQ5D-XUHkxYS8b4z/preview",
+        type: "Reflections"
     },
     {
-        title: "Expert Talk: Role of Values in Engineering",
-        description: "Guest session by Dr. Kumar.",
-        thumbnail: "logo.jpg", // Placeholder thumbnail
-        videoUrl: "https://www.youtube.com/embed/example3",
-        type: "Talk"
+        title: "One Attempt",
+        description: "A story about perseverance and integrity.",
+        thumbnail: "logo.jpg",
+        videoUrl: "https://drive.google.com/file/d/1Jmc_EqtHbC7MlpQrvC5LtLqDC0EqfDRc/preview",
+        type: "Educational"
     }
 ];

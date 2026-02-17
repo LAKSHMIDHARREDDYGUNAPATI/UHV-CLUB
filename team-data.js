@@ -41,14 +41,14 @@ const studentCoordinators = [
         image: "varun.jpg"
     },
     {
-        name: "V.BRAMHANI",
+        name: "V.Bramhani",
         role: "Student Co-Coordinator",
         detail: "",
         icon: "fa-user-graduate",
         image: "bramhani.jpg"
     },
     {
-        name: "P.CHARUHAAINI",
+        name: "P.Charuhaaini",
         role: "Student Co-Coordinator",
         detail: "",
         icon: "fa-user-graduate",
@@ -60,6 +60,13 @@ const studentCoordinators = [
         detail: "",
         icon: "fa-user-graduate",
         image: "prathyush.jpg"
+    },
+    {
+        name: "K.Chandu",
+        role: "Student Co-Coordinator",
+        detail: "",
+        icon: "fa-user-graduate",
+        image: "chandu.jpg"
     },
     // Technical Row
     {
@@ -133,6 +140,13 @@ const studentCoordinators = [
         detail: "",
         icon: "fa-file-pen",
         image: "lokanadh.jpg"
+    },
+    {
+        name: "G.Varalakshmi",
+        role: "Content Co-Coordinator",
+        detail: "",
+        icon: "fa-file-pen",
+        image: "varalakshmi.jpg"
     },
 ];
 

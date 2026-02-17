@@ -72,8 +72,151 @@
         </div>
     </section>
 
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="video-container">
+                <iframe id="videoPlayer" src="" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            </div>
+            <div class="video-info">
+                <h3 id="modalTitle"></h3>
+                <p id="modalDesc"></p>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .video-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-modal-content {
+            width: 90%;
+            max-width: 1000px;
+            position: relative;
+            background: var(--bg-surface);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--primary-dim);
+            box-shadow: 0 0 50px rgba(0, 243, 255, 0.2);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            color: var(--white);
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 ratio */
+            height: 0;
+            background: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-info {
+            padding: 25px;
+        }
+
+        .video-info h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .video-info p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .video-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover .video-card-overlay {
+            opacity: 1;
+        }
+
+        .play-btn-circle {
+            width: 70px;
+            height: 70px;
+            background: rgba(0, 243, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 20px var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .play-btn-circle {
+            transform: scale(1.1);
+        }
+    </style>
+
     <script src="videos-data.js"></script>
     <script>
+        const modal = document.getElementById('videoModal');
+        const player = document.getElementById('videoPlayer');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDesc');
+        const closeModal = document.querySelector('.close-modal');
+
         function createVideoCard(video, index) {
             const card = document.createElement('div');
             card.className = 'card fade-in';
@@ -82,18 +225,48 @@
             card.style.animationDelay = `${index * 0.2}s`;
 
             card.innerHTML = `
-                <div style="aspect-ratio: 16/9; background: #000; display: flex; align-items: center; justify-content: center; position: relative;">
-                    <img src="${video.thumbnail}" alt="${video.title}" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;">
-                    <i class="fa-solid fa-play-circle" style="font-size: 3.5rem; color: var(--primary); cursor: pointer; position: absolute; z-index: 2;"></i>
-                    <div style="position: absolute; bottom: 0; width: 100%; background: rgba(0,0,0,0.8); padding: 10px; font-size: 0.9rem; z-index: 3;">
-                        <strong>${video.title}</strong>
-                        <p style="font-size: 0.75rem; color: #94a3b8; margin: 5px 0 0 0;">${video.description}</p>
+                <div style="aspect-ratio: 16/9; background: #000; position: relative; overflow: hidden;">
+                    <img src="${video.thumbnail}" alt="${video.title}" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+                    <div class="video-card-overlay">
+                        <div class="play-btn-circle">
+                            <i class="fa-solid fa-play" style="font-size: 1.5rem; color: var(--primary); margin-left: 5px;"></i>
+                        </div>
                     </div>
+                </div>
+                <div style="padding: 20px; background: var(--bg-surface);">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                        <span style="font-size: 0.7rem; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; font-weight: 700;">${video.type || 'Resource'}</span>
+                    </div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 8px;">${video.title}</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">${video.description}</p>
                 </div>
             `;
 
+            card.addEventListener('click', () => openVideo(video));
+
             return card;
         }
+
+        function openVideo(video) {
+            // Use preview link with autoplay
+            player.src = video.videoUrl + (video.videoUrl.includes('?') ? '&' : '?') + 'autoplay=1';
+            modalTitle.innerText = video.title;
+            modalDesc.innerText = video.description;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        closeModal.onclick = () => {
+            modal.style.display = 'none';
+            player.src = '';
+            document.body.style.overflow = 'auto';
+        };
+
+        window.onclick = (event) => {
+            if (event.target == modal) {
+                closeModal.onclick();
+            }
+        };
 
         const grid = document.getElementById('videoGrid');
         if (typeof videoResources !== 'undefined') {
