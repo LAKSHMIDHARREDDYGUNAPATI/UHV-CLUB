@@ -2,22 +2,22 @@ const videoResources = [
     {
         title: "The Deadline Disaster",
         description: "A short film on managing time and values.",
-        thumbnail: "logo.jpg",
-        videoUrl: "https://drive.google.com/file/d/1PV4OlM0Hsrdq_nUOWPsugxtIqrOaEjsa/preview",
+        thumbnail: "https://www.dailymotion.com/thumbnail/video/xa0dgw8",
+        videoUrl: "https://geo.dailymotion.com/player/x8p5u.html?video=xa0dgw8&autoplay=0&ui-start-screen-info=0&ui-logo=0&queue-enable=0&sharing-enable=0&ui-theme-dark=1&ui-display-sharing=0&ui-display-logo=0&ui-highlight=00f3ff&ui-display-cast=1&ui-display-watermark=0&ui-display-title=0",
         type: "Short Film"
     },
     {
         title: "Change Begins WithIn",
         description: "Exploring personal transformation.",
-        thumbnail: "logo.jpg",
-        videoUrl: "https://drive.google.com/file/d/1iNLWrr2fXi1A07cpOQ5D-XUHkxYS8b4z/preview",
+        thumbnail: "https://www.dailymotion.com/thumbnail/video/xa0dgw2",
+        videoUrl: "https://geo.dailymotion.com/player/x8p5u.html?video=xa0dgw2&autoplay=0&ui-start-screen-info=0&ui-logo=0&queue-enable=0&sharing-enable=0&ui-theme-dark=1&ui-display-sharing=0&ui-display-logo=0&ui-highlight=00f3ff&ui-display-cast=1&ui-display-watermark=0&ui-display-title=0",
         type: "Reflections"
     },
     {
         title: "One Attempt",
         description: "A story about perseverance and integrity.",
-        thumbnail: "logo.jpg",
-        videoUrl: "https://drive.google.com/file/d/1Jmc_EqtHbC7MlpQrvC5LtLqDC0EqfDRc/preview",
+        thumbnail: "https://www.dailymotion.com/thumbnail/video/xa0dgw4",
+        videoUrl: "https://geo.dailymotion.com/player/x8p5u.html?video=xa0dgw4&autoplay=0&ui-start-screen-info=0&ui-logo=0&queue-enable=0&sharing-enable=0&ui-theme-dark=1&ui-display-sharing=0&ui-display-logo=0&ui-highlight=00f3ff&ui-display-cast=1&ui-display-watermark=0&ui-display-title=0",
         type: "Educational"
     }
 ];

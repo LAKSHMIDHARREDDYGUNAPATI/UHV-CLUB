@@ -39,4 +39,67 @@ document.addEventListener('DOMContentLoaded', () => {
     if (yearElement) {
         yearElement.textContent = new Date().getFullYear();
     }
+
+    // 4. Universal Video Player Logic
+    // This makes the Pro-Level Dailymotion player the default for all videos sitewide.
+    window.dmPlayer = null;
+
+    window.openVideo = async function (video) {
+        const modal = document.getElementById('videoModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDesc');
+
+        if (!modal) return;
+
+        modalTitle.innerText = video.title;
+        modalDesc.innerText = video.description;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+
+        const videoId = video.videoUrl.split('video=')[1].split('&')[0];
+        const playerContainer = document.getElementById('dailymotion-player');
+
+        if (!playerContainer) return;
+
+        // Reset container to ensure a fresh player instance for every click
+        playerContainer.innerHTML = '';
+        window.dmPlayer = null;
+
+        if (typeof dailymotion !== 'undefined') {
+            dailymotion.createPlayer('dailymotion-player', {
+                video: videoId,
+                player: 'x8p5u',
+                params: {
+                    autoplay: true,
+                    mute: false,
+                    controls: true
+                    // Default settings allow for monetization/ads
+                }
+            }).then((p) => {
+                window.dmPlayer = p;
+                // Auto-fullscreen on play
+                window.dmPlayer.on(dailymotion.events.PLAYER_PLAY, () => {
+                    window.dmPlayer.setFullscreen(true);
+                });
+            }).catch(err => console.error("Video player error:", err));
+        }
+    };
+
+    // Global Modal Close Handlers
+    const closeModal = document.querySelector('.close-modal');
+    const modal = document.getElementById('videoModal');
+
+    if (closeModal) {
+        closeModal.onclick = () => {
+            if (modal) modal.style.display = 'none';
+            if (window.dmPlayer) window.dmPlayer.pause();
+            document.body.style.overflow = 'auto';
+        };
+    }
+
+    window.onclick = (event) => {
+        if (event.target == modal) {
+            if (closeModal) closeModal.onclick();
+        }
+    };
 });
