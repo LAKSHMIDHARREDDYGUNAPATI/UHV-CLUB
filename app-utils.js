@@ -102,4 +102,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (closeModal) closeModal.onclick();
         }
     };
+
+    // 5. Global Download App Link
+    document.querySelectorAll('.btn-download-app').forEach(btn => {
+        btn.href = "https://emotionallytonightintelligent.com/x8hwqv72xz?key=38d45a1aedbbb6ea28d603baadb16c3d";
+        btn.target = "_blank";
+    });
 });
